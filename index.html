@@ -1,44 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Johnny Fitswell | Tattoo Artist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    /* ====== 6) Background glow upgrade ====== */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b0b0b;
+      background: radial-gradient(circle at top, #1a1025, #0b0b0b);
       color: #ffffff;
     }
 
+    /* ====== Header / Hero (1) ====== */
     header {
-      padding: 40px 20px;
+      padding: 70px 20px 55px;
       text-align: center;
-      background: #111;
+      background: rgba(17, 17, 17, 0.65);
       border-bottom: 1px solid #333;
+      backdrop-filter: blur(8px);
     }
 
     h1 {
-      margin-bottom: 10px;
-      font-size: 32px;
+      margin: 0 0 10px;
+      font-size: 48px;
+      letter-spacing: 0.5px;
     }
 
     .subtitle {
       color: #aaa;
+      margin: 0 0 18px;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
+    .socials {
+      margin-top: 10px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .socials a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Hero CTA buttons */
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary {
+      border: none;
+      background: linear-gradient(135deg, #c084fc, #9333ea);
+      box-shadow: 0 0 22px rgba(192,132,252,0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 28px rgba(192,132,252,0.55);
+    }
+
+    /* ====== Sections (3) ====== */
     section {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
+      border-bottom: 1px solid #222; /* structure + separation */
     }
 
     h2 {
-      margin-bottom: 15px;
+      margin: 0 0 12px;
+      font-size: 28px;
     }
 
+    .section-note {
+      color: #aaa;
+      margin-top: 0;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    /* ====== Portfolio grid ====== */
     .portfolio {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -47,36 +119,83 @@
 
     .portfolio img {
       width: 100%;
-      height: 250px;        /* forces same height */
-      object-fit: cover;    /* crops nicely to fill box */
-      border-radius: 10px;
-      cursor: pointer;      /* shows it's clickable */
-    }
-
-    iframe {
+      height: 260px;         /* symmetrical */
+      object-fit: cover;     /* crops nicely */
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,.6);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;  /* (2) hover effect */
+      border: 1px solid rgba(255,255,255,0.10);
     }
 
-    .socials a {
-      margin: 0 10px;
-      color: #c084fc;
-      text-decoration: none;
+    /* ====== 2) Hover glow upgrade ====== */
+    .portfolio img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 24px rgba(192,132,252,0.40);
     }
 
-    .socials a:hover {
-      text-decoration: underline;
+    /* ====== Booking box ====== */
+    #booking .booking-box {
+      margin-top: 15px;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    /* ====== 4) Make Setmore "Book now" button look premium ====== */
+    .anywhere-book-now-button {
+      background: linear-gradient(135deg, #c084fc, #9333ea) !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 14px 24px !important;
+      font-size: 16px !important;
+      font-weight: 900 !important;
+      border-radius: 10px !important;
+      cursor: pointer !important;
+      box-shadow: 0 0 22px rgba(192,132,252,0.40) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .anywhere-book-now-button:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 0 28px rgba(192,132,252,0.60) !important;
+    }
+
+    /* ====== 5) About section styling ====== */
+    .about-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      line-height: 1.7;
+    }
+
+    .tag-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #ddd;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px 20px;
       font-size: 14px;
       color: #aaa;
     }
 
-    /* ✅ Fullscreen modal CSS (MUST live inside <style>) */
-    .modal{
+    /* ====== Fullscreen modal (click images to enlarge) ====== */
+    .modal {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
@@ -87,18 +206,19 @@
       z-index: 9999;
     }
 
-    .modal.open{
+    .modal.open {
       display: flex;
     }
 
-    .modal-img{
+    .modal-img {
       max-width: 95vw;
       max-height: 90vh;
       border-radius: 12px;
       box-shadow: 0 0 30px rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .modal-close{
+    .modal-close {
       position: fixed;
       top: 16px;
       right: 16px;
@@ -112,96 +232,132 @@
       cursor: pointer;
     }
 
-    .modal-close:hover{
+    .modal-close:hover {
       background: rgba(255,255,255,0.25);
     }
-  </style>
 
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      h1 { font-size: 38px; }
+      .portfolio img { height: 230px; }
+      section { padding: 40px 16px; }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Johnny Fitswell</h1>
-  <p class="subtitle">Custom Tattoos • Color • Watercolor Style</p>
+  <!-- ====== HERO (1) ====== -->
+  <header>
+    <h1>Johnny Fitswell</h1>
+    <p class="subtitle">Custom Tattoos • Color • Watercolor Style</p>
 
-  <div class="socials">
-    <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener noreferrer">Instagram</a> |
-    <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#booking">Book Appointment</a>
+      <a class="btn" href="#portfolio">View Portfolio</a>
+    </div>
+
+    <div class="socials">
+      <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </header>
+
+  <!-- ====== PORTFOLIO ====== -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p class="section-note">Click any tattoo to view fullscreen.</p>
+
+    <div class="portfolio">
+      <img class="portfolio-img" src="tattoo1.jpg" alt="Tattoo 1" />
+      <img class="portfolio-img" src="tattoo2.jpg" alt="Tattoo 2" />
+      <img class="portfolio-img" src="tattoo3.jpg" alt="Tattoo 3" />
+    </div>
+  </section>
+
+  <!-- ====== ABOUT (5) ====== -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-card">
+      <p class="section-note" style="margin-bottom: 8px;">
+        I specialize in vibrant color and watercolor-style tattoos that look like painted art on skin.
+        Clean execution, bold color, and custom designs tailored to the client.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag">Custom Designs</span>
+        <span class="tag">Color / Watercolor</span>
+        <span class="tag">Consult-First</span>
+        <span class="tag">By Appointment</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BOOKING (4) ====== -->
+  <section id="booking">
+    <h2>Book an Appointment</h2>
+    <p class="section-note">Tap “Book now” to view availability and schedule your session.</p>
+
+    <div class="booking-box">
+      <!-- ✅ Setmore embed (keep as-is, only booking URL matters) -->
+      <script id="anywhere_book_now_script"
+        src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+
+      <button
+        id="Anywhere_button_iframe"
+        class="anywhere-book-now-button"
+        data-booking-url="https://fitswellink.setmore.com"
+        data-new-tab="false">
+        Book now
+      </button>
+
+      <p class="section-note" style="margin: 14px 0 0;">
+        Tip: Have your idea, placement, and size ready — it speeds up the consult.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Johnny Fitswell — By Appointment Only
+  </footer>
+
+  <!-- ====== Fullscreen Modal HTML ====== -->
+  <div id="imgModal" class="modal" aria-hidden="true">
+    <button id="modalClose" class="modal-close" aria-label="Close fullscreen">✕</button>
+    <img id="modalImg" class="modal-img" alt="" />
   </div>
-</header>
 
-<section>
-  <h2>Portfolio</h2>
+  <!-- ====== Fullscreen Modal JS ====== -->
+  <script>
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
 
-  <div class="portfolio">
-    <img class="portfolio-img" src="tattoo1.jpg" alt="Tattoo 1">
-    <img class="portfolio-img" src="tattoo2.jpg" alt="Tattoo 2">
-    <img class="portfolio-img" src="tattoo3.jpg" alt="Tattoo 3">
-  </div>
-</section>
-
-<section>
-  <h2>Book an Appointment</h2>
-  <p class="subtitle">Schedule your session below</p>
-
-  <!-- ✅ Setmore button embed -->
-  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
-  <button
-    id="Anywhere_button_iframe"
-    class="anywhere-book-now-button"
-    style="background-color:#000;color:#fff;border:none;padding:12px 18px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;"
-    data-booking-url="https://fitswellink.setmore.com"
-    data-new-tab="false">
-    Book now
-  </button>
-</section>
-
-<footer>
-  © 2026 Johnny Fitswell — By Appointment Only
-</footer>
-
-<!-- ✅ Fullscreen Image Modal HTML -->
-<div id="imgModal" class="modal" aria-hidden="true">
-  <button id="modalClose" class="modal-close" aria-label="Close fullscreen">✕</button>
-  <img id="modalImg" class="modal-img" alt="">
-</div>
-
-<!-- ✅ Fullscreen Image Modal JS (MUST be inside <script>) -->
-<script>
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImg");
-  const modalClose = document.getElementById("modalClose");
-
-  // Make every portfolio image clickable
-  document.querySelectorAll(".portfolio-img").forEach(img => {
-    img.addEventListener("click", () => {
-      modalImg.src = img.src;
-      modalImg.alt = img.alt || "Fullscreen image";
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
+    document.querySelectorAll(".portfolio-img").forEach(img => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt || "Fullscreen image";
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      });
     });
-  });
 
-  function closeModal(){
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    modalImg.src = "";
-  }
-
-  modalClose.addEventListener("click", closeModal);
-
-  // Click outside the image to close
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Press ESC to close
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) {
-      closeModal();
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
     }
-  });
-</script>
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+  </script>
 
 </body>
 </html>
