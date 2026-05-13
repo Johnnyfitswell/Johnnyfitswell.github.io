@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tattoo Artist | Booking & Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+    }
+    header {
+      padding: 30px;
+      text-align: center;
+      background: #111;
+      border-bottom: 1px solid #333;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .portfolio img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    iframe {
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,.6);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    a {
+      color: #c084fc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ARTIST NAME</h1>
+  <p>Custom Tattoos • Consultations • Book Online</p>
+  <p>
+    <a href="https://instagram.com/YOURHANDLE">Instagram</a> |
+    <a href="https://facebook.com/YOURPAGE">Facebook</a>
+  </p>
+</header>
+
+<section>
+  <h2>Portfolio</h2>
+  <div class="portfolio">
+    <img src="https://via.placeholder.com/400x400?text=Tattoo+1">
+    <img src="https://via.placeholder.com/400x400?text=Tattoo+2">
+    <img src="https://via.placeholder.com/400x400?text=Tattoo+3">
+  </div>
+</section>
+
+<section>
+  <h2>Book an Appointment</h2>
+
+  <!-- ✅ PASTE YOUR SETMORE EMBED CODE BELOW THIS LINE -->
+
+  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script> <button id="Anywhere_button_iframe" class="anywhere-book-now-button" style=" background-color: #000; color: #fff; border: none; padding: 12px 18px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; " data-booking-url="https://fitswellink.setmore.com" data-new-tab="false"> Book now </button>
+
+  <!-- ✅ END SETMORE EMBED -->
+
+</section>
+
+<footer>
+  © 2026 ARTIST NAME — By Appointment Only
+</footer>
+
+</body>
+</html>
