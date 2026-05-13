@@ -44,14 +44,14 @@
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 15px;
     }
-    
+
     .portfolio img {
       width: 100%;
       height: 250px;        /* forces same height */
       object-fit: cover;    /* crops nicely to fill box */
       border-radius: 10px;
+      cursor: pointer;      /* shows it's clickable */
     }
-
 
     iframe {
       border-radius: 12px;
@@ -74,9 +74,50 @@
       font-size: 14px;
       color: #aaa;
     }
-  </style>
-</head>
 
+    /* ✅ Fullscreen modal CSS (MUST live inside <style>) */
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+    }
+
+    .modal.open{
+      display: flex;
+    }
+
+    .modal-img{
+      max-width: 95vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    }
+
+    .modal-close{
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .modal-close:hover{
+      background: rgba(255,255,255,0.25);
+    }
+  </style>
+
+</head>
 <body>
 
 <header>
@@ -84,38 +125,83 @@
   <p class="subtitle">Custom Tattoos • Color • Watercolor Style</p>
 
   <div class="socials">
-    <a href="https://instagram.com/johnnyfitswell" target="_blank">Instagram</a> |
-    <a href="https://facebook.com/JohnnyFitswell" target="_blank">Facebook</a>
+    <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener noreferrer">Instagram</a> |
+    <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener noreferrer">Facebook</a>
   </div>
 </header>
 
 <section>
   <h2>Portfolio</h2>
 
- <div class="portfolio">
-  <img src="tattoo1.jpg">
-  <img src="tattoo2.jpg">
-  <img src="tattoo3.jpg">
-</div>
-
+  <div class="portfolio">
+    <img class="portfolio-img" src="tattoo1.jpg" alt="Tattoo 1">
+    <img class="portfolio-img" src="tattoo2.jpg" alt="Tattoo 2">
+    <img class="portfolio-img" src="tattoo3.jpg" alt="Tattoo 3">
+  </div>
 </section>
 
 <section>
   <h2>Book an Appointment</h2>
   <p class="subtitle">Schedule your session below</p>
 
-  <!-- ✅ PASTE YOUR SETMORE CODE RIGHT BELOW -->
-
-  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script> <button id="Anywhere_button_iframe" class="anywhere-book-now-button" style=" background-color: #000; color: #fff; border: none; padding: 12px 18px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; " data-booking-url="https://fitswellink.setmore.com" data-new-tab="false"> Book now </button>
-  
-
-  <!-- ✅ END -->
-
+  <!-- ✅ Setmore button embed -->
+  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+  <button
+    id="Anywhere_button_iframe"
+    class="anywhere-book-now-button"
+    style="background-color:#000;color:#fff;border:none;padding:12px 18px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;"
+    data-booking-url="https://fitswellink.setmore.com"
+    data-new-tab="false">
+    Book now
+  </button>
 </section>
 
 <footer>
   © 2026 Johnny Fitswell — By Appointment Only
 </footer>
+
+<!-- ✅ Fullscreen Image Modal HTML -->
+<div id="imgModal" class="modal" aria-hidden="true">
+  <button id="modalClose" class="modal-close" aria-label="Close fullscreen">✕</button>
+  <img id="modalImg" class="modal-img" alt="">
+</div>
+
+<!-- ✅ Fullscreen Image Modal JS (MUST be inside <script>) -->
+<script>
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalClose = document.getElementById("modalClose");
+
+  // Make every portfolio image clickable
+  document.querySelectorAll(".portfolio-img").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || "Fullscreen image";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  function closeModal(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    modalImg.src = "";
+  }
+
+  modalClose.addEventListener("click", closeModal);
+
+  // Click outside the image to close
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Press ESC to close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
+    }
+  });
+</script>
 
 </body>
 </html>
