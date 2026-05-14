@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Artists</title>
 
-  <!-- ✅ Correct CSS link (THIS is what you were missing) -->
+  <!-- ✅ Correct: load your CSS -->
   <link rel="stylesheet" href="styles.css" />
 
+  <!-- Page-only styling (warm layout + glow + quote) -->
   <style>
-    /* Warm, welcoming centered layout like your reference */
     .artists-container{
       max-width: 820px;
       margin: 0 auto;
       text-align: center;
-      padding-bottom: 10px;
+      padding: 20px 0 10px;
     }
 
     .artists-title{
@@ -31,14 +31,13 @@
       max-width: 70ch;
     }
 
-    /* Image + glow wrapper */
+    /* Photo + glow */
     .photo-wrap{
       width: 260px;
       margin: 0 auto 18px;
       position: relative;
     }
 
-    /* ✅ Glow behind image */
     .photo-wrap::before{
       content:"";
       position:absolute;
@@ -72,36 +71,6 @@
       text-transform: uppercase;
     }
 
-    /* Quote block */
-    .artist-quote{
-      margin: 22px auto 0;
-      padding: 18px 18px;
-      max-width: 700px;
-      text-align: left;
-      font-style: italic;
-      line-height: 1.9;
-      color: rgba(255,255,255,.82);
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      border-left: 4px solid #c084fc;
-      border-radius: 14px;
-    }
-
-    /* Bio card */
-    .artist-bio{
-      margin: 18px auto 0;
-      max-width: 72ch;
-      text-align: left;
-      color: rgba(255,255,255,.78);
-      line-height: 1.85;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .artist-bio p{ margin: 0 0 14px; }
-    .artist-bio p:last-child{ margin-bottom: 0; }
-
     .pill-row{
       display:flex;
       justify-content:center;
@@ -120,6 +89,34 @@
       letter-spacing: .3px;
     }
 
+    .artist-quote{
+      margin: 22px auto 0;
+      padding: 18px 18px;
+      max-width: 700px;
+      text-align: left;
+      font-style: italic;
+      line-height: 1.9;
+      color: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-left: 4px solid #c084fc;
+      border-radius: 14px;
+    }
+
+    .artist-bio{
+      margin: 18px auto 0;
+      max-width: 72ch;
+      text-align: left;
+      color: rgba(255,255,255,.78);
+      line-height: 1.85;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .artist-bio p{ margin: 0 0 14px; }
+    .artist-bio p:last-child{ margin-bottom: 0; }
+
     .artist-links{
       margin-top: 18px;
       display:flex;
@@ -127,7 +124,6 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-
     .artist-links a{
       color: #c084fc;
       font-weight: 900;
@@ -167,6 +163,7 @@
       <div class="menu-title">JOHNNY FITSWELL</div>
       <button id="menuClose" class="menu-close" aria-label="Close menu">✕</button>
     </div>
+
     <div class="menu-links">
       <nav>
         <a href="index.html">Home</a>
@@ -188,7 +185,7 @@
       </p>
     </section>
 
-    <!-- ✅ PHOTO (this fixes the “johnny.jpg” text issue) -->
+    <!-- ✅ Correct: image must be an <img> tag (not text) -->
     <div class="photo-wrap">
       <img class="artist-photo" src="johnny.jpg" alt="Johnny Fitswell" />
     </div>
@@ -202,7 +199,6 @@
       <span class="pill">Consult-First</span>
     </div>
 
-    <!-- ✅ QUOTE (artist’s words) -->
     <div class="artist-quote">
       “I'm an artist of all sorts, down to the bone, through blood sweat and tears.
       Always watching, always evolving, aware of change.
@@ -210,7 +206,6 @@
       Art will create itself in its rawest nature.”
     </div>
 
-    <!-- ✅ BIO (warm + confident) -->
     <div class="artist-bio">
       <p><strong>Johnny started tattooing at 25</strong> and quickly built a name for bold, vibrant color work.</p>
       <p>He’s best known for clean, punchy color and watercolor-style tattoos — but he’s versatile and comfortable working across any style.</p>
@@ -227,7 +222,7 @@
 
   <footer>© 2026 Johnny Fitswell</footer>
 
-  <!-- ✅ Correct JS link (THIS is what you were missing) -->
+  <!-- ✅ Correct: load your JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
