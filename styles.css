@@ -44,6 +44,7 @@ a:hover{ text-decoration: underline; }
 .brand{
   font-weight: 900;
   letter-spacing: .5px;
+  text-transform: uppercase;
 }
 
 /* Hamburger button */
