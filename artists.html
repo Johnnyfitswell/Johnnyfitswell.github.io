@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Johnny Fitswell | Artists</title>
+
+  styles.css
+
+  <style>
+    .artists-container{
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .artists-title{
+      font-size: 36px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .artists-intro{
+      color: #aaa;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* IMAGE + GLOW */
+    .photo-wrap{
+      width: 260px;
+      margin: auto;
+      position: relative;
+    }
+
+    .photo-wrap::before{
+      content:"";
+      position:absolute;
+      inset:-20px;
+      background: radial-gradient(circle, rgba(192,132,252,0.5), transparent 70%);
+      filter: blur(10px);
+      z-index:0;
+    }
+
+    .artist-photo{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:12px;
+      position:relative;
+      z-index:1;
+      box-shadow:0 12px 30px rgba(0,0,0,.6);
+    }
+
+    .artist-name{
+      font-size:28px;
+      margin-top:15px;
+    }
+
+    /* 🔥 QUOTE STYLE */
+    .artist-quote{
+      margin: 25px auto;
+      padding: 20px;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 650px;
+      border-left: 4px solid #c084fc;
+      background: rgba(255,255,255,.04);
+      color: #ddd;
+    }
+
+    .artist-story{
+      color:#ccc;
+      line-height:1.8;
+      text-align:left;
+      margin-top:20px;
+    }
+
+    .artist-story p{
+      margin-bottom:16px;
+    }
+
+    .artist-links{
+      margin-top:20px;
+    }
+
+    .artist-links a{
+      color:#c084fc;
+      margin:0 10px;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .artist-links a:hover{
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">JOHNNY FITSWELL</div>
+
+    <button id="menuBtn" class="menu-btn">
+      <div class="menu-icon">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="menuOverlay" class="menu-overlay">
+  <div class="menu-top">
+    <div class="menu-title">JOHNNY FITSWELL</div>
