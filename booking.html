@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking | Johnny Fitswell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- ✅ This is the correct way to load your CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ✅ TOP BAR -->
+  <div class="topbar">
+    <div>JOHNNY FITSWELL</div>
+    <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+  </div>
+
+  <!-- ✅ FULL SCREEN MENU -->
+  <div id="menu" class="menu">
+    <div class="close" onclick="closeMenu()" aria-label="Close menu">✕</div>
+
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="artists.html">Artists</a>
+    <a href="booking.html">Booking</a>
+    <a href="portfolio.html">Portfolio</a>
+  </div>
+
+  <!-- ✅ PAGE CONTENT -->
+  <div style="padding:40px; text-align:center;">
+    <h1>BOOKING</h1>
+
+    <p style="color:#aaa; max-width:520px; margin:0 auto; line-height:1.6;">
+      Select a time for your consultation or tattoo session.
+    </p>
+
+    <br><br>
+
+    <!-- ✅ Setmore widget loader (this must be exactly like this) -->
+    <script
+      id="anywhere_book_now_script"
+      src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js">
+    </script>
+
+    <!-- ✅ Setmore button -->
+    <button
+      id="Anywhere_button_iframe"
+      class="anywhere-book-now-button"
+      data-booking-url="https://fitswellink.setmore.com"
+      data-new-tab="false"
+      style="
+        background: linear-gradient(135deg, #c084fc, #9333ea);
+        color: white;
+        padding: 14px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;">
+      Book Now
+    </button>
+
+    <p style="color:#aaa; max-width:520px; margin:18px auto 0; line-height:1.6;">
+      Tip: Have your idea, placement, and size ready — it speeds up the consult.
+    </p>
+  </div>
+
+  <!-- ✅ This is the correct way to load your JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
