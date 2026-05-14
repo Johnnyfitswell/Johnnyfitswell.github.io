@@ -4,7 +4,135 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Johnny Fitswell | Home</title>
+
+  <!-- Main site stylesheet -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Home-page-only styling to add "character" -->
+  <style>
+    /* Adds a gritty + ink/steel vibe without changing your other pages */
+    .home-hero{
+      position: relative;
+      padding: 70px 0 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Subtle “ink + steel” background texture */
+    .home-hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(192,132,252,.20), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(255,255,255,.06), transparent 55%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .home-hero > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .tagline{
+      margin: 10px auto 6px;
+      display:inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .hero-title{
+      margin: 0 0 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Social links displayed in hero area */
+    .hero-social{
+      margin-top: 14px;
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .hero-social a{
+      color: #c084fc;
+      font-weight: 800;
+      letter-spacing: .6px;
+    }
+
+    /* Split theme section */
+    .split-wrap{
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .split-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .split-card{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: 16px;
+    }
+
+    .split-card h3{
+      margin: 0 0 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .split-card p{
+      margin: 0;
+      color: rgba(255,255,255,.75);
+      line-height: 1.6;
+    }
+
+    /* Divider line that blends ink + metal */
+    .split-divider{
+      margin-top: 18px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #c084fc, rgba(255,255,255,.18), rgba(255,255,255,.06));
+    }
+
+    /* Map wrapper (kept here so Home works even if styles.css doesn’t have it yet) */
+    .map-wrap{
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .map-wrap iframe{
+      width: 100%;
+      height: 380px;
+      border: 0;
+      display: block;
+    }
+    @media (max-width: 800px){
+      .split-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px){
+      .map-wrap iframe{ height: 320px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -13,6 +141,7 @@
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
 
+      <!-- Hamburger button -->
       <button id="menuBtn" class="menu-btn" aria-label="Open menu">
         <div class="menu-icon" aria-hidden="true">
           <span></span><span></span><span></span>
@@ -21,7 +150,7 @@
     </div>
   </div>
 
-  <!-- FULLSCREEN MENU -->
+  <!-- FULLSCREEN MENU OVERLAY -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-top">
       <div class="menu-title">JOHNNY FITSWELL</div>
@@ -41,21 +170,57 @@
 
   <!-- PAGE CONTENT -->
   <div class="container">
-    <section class="hero">
-      <h1>Johnny Fitswell</h1>
+    <!-- HERO (with added character) -->
+    <section class="home-hero">
+      <div class="tagline">Art Above • Steel Below</div>
 
-      <!-- ✅ Your requested line -->
-      <p>Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
+      <h1 class="hero-title">Johnny Fitswell</h1>
 
-      <!-- ✅ Social moved into header area (above Location) -->
-      <p class="note" style="margin-top:16px;">
-        <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
-        &nbsp;•&nbsp;
-        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
+      <!-- Your requested line + social directly under it -->
+      <p style="max-width:60ch;margin:0 auto;color:rgba(255,255,255,.75);line-height:1.6;">
+        Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.
       </p>
+
+      <!-- Social ABOVE Location (as requested) -->
+      <div class="hero-social">
+        <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
+        <span style="color:rgba(255,255,255,.35)">•</span>
+        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
+      </div>
+
+      <!-- Split theme story section -->
+      <div class="split-wrap">
+        <h2 style="margin:0 0 6px;letter-spacing:1px;text-transform:uppercase;font-size:16px;">
+          Two Worlds. One Spot.
+        </h2>
+        <p style="margin:0;color:rgba(255,255,255,.75);line-height:1.6;">
+          Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
+          Downstairs is precision and gear. Different energy — same location.
+        </p>
+
+        <div class="split-grid">
+          <div class="split-card">
+            <h3>Upstairs • Tattoo Studio</h3>
+            <p>
+              Custom designs, color work, and watercolor-style pieces.
+              Book a consult and bring your idea, placement, and size.
+            </p>
+          </div>
+
+          <div class="split-card">
+            <h3>Downstairs • Gun Store</h3>
+            <p>
+              A separate space downstairs with a rugged, mechanical vibe.
+              The contrast is the brand: art up top, steel down below.
+            </p>
+          </div>
+        </div>
+
+        <div class="split-divider"></div>
+      </div>
     </section>
 
-    <!-- ✅ Location AFTER Social -->
+    <!-- LOCATION SECTION (Google Maps embed) -->
     <section class="section">
       <h2>Location</h2>
       <p class="note">Find us here:</p>
@@ -76,6 +241,8 @@
 
   <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
 
+  <!-- Site script (menu open/close, etc.) -->
   <script src="script.js"></script>
 </body>
 </html>
+``
