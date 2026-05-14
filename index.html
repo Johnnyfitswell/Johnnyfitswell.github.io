@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Home</title>
+
   <link rel="stylesheet" href="styles.css" />
 
   <style>
@@ -44,6 +45,13 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+    .hero-sub{
+      max-width: 60ch;
+      margin: 0 auto;
+      color: rgba(255,255,255,.78);
+      line-height: 1.7;
+    }
+
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -147,7 +155,7 @@
       <div class="tagline">Art Above • Steel Below</div>
       <h1 class="hero-title">Johnny Fitswell</h1>
 
-      <p style="max-width:60ch;margin:0 auto;color:rgba(255,255,255,.78);line-height:1.7;">
+      <p class="hero-sub">
         Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.
       </p>
 
@@ -159,11 +167,12 @@
       </div>
 
       <div class="split-wrap">
-        <h2 style="margin:0 0 6px;letter-spacing:1px;text-transform:uppercase;font-size:16px;">
-          Two Worlds. One Spot.
-        </h2>
-        <p style="margin:0;color:rgba(255,255,255,.75);line-height:1.6;">
+        <h2 class="h2-tight">Two Worlds. One Spot.</h2>
+
+        <!-- Mobile-friendly: split into two lines on small screens via <br> -->
+        <p class="note home-intro">
           Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
+          <br class="mobile-only"><br class="mobile-only">
           Downstairs is precision and gear. Different energy — same location.
         </p>
 
@@ -189,8 +198,11 @@
       <div class="map-wrap">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1032.6881658014206!2d-98.41190393036196!3d29.547914298448614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c8b69a36c137b%3A0x49975085ec7ab7ad!2s11950%20Nacogdoches%20Rd%2C%20San%20Antonio%2C%20TX%2078217!5e1!3m2!1sen!2sus!4v1778725474796!5m2!1sen!2sus"
-          width="600" height="450" style="border:0;"
-          allowfullscreen="" loading="lazy"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
