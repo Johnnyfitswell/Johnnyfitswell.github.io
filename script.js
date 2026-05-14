@@ -1,4 +1,4 @@
-// ===== Fullscreen menu overlay =====
+// ===== MENU OVERLAY =====
 const menuBtn = document.getElementById("menuBtn");
 const menuOverlay = document.getElementById("menuOverlay");
 const menuClose = document.getElementById("menuClose");
@@ -8,7 +8,6 @@ function openMenu(){
   menuOverlay.classList.add("open");
   document.body.style.overflow = "hidden";
 }
-
 function closeMenu(){
   if(!menuOverlay) return;
   menuOverlay.classList.remove("open");
@@ -22,7 +21,7 @@ document.querySelectorAll(".menu-links a").forEach(a=>{
   a.addEventListener("click", closeMenu);
 });
 
-// ===== Fullscreen image modal (portfolio only) =====
+// ===== PORTFOLIO MODAL =====
 const imgModal = document.getElementById("imgModal");
 const modalImg = document.getElementById("modalImg");
 const modalClose = document.getElementById("modalClose");
@@ -49,9 +48,11 @@ if(imgModal){
   });
 }
 
+// ESC closes menu + modal
 document.addEventListener("keydown", (e)=>{
   if(e.key === "Escape"){
     closeMenu();
     closeImageModal();
   }
 });
+``
