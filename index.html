@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Home-page character: subtle ink/steel texture */
+    /* Home hero texture */
     .home-hero{
       position: relative;
       padding: 70px 0 40px;
@@ -52,7 +52,6 @@
       line-height: 1.7;
     }
 
-    /* Social links row */
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -65,7 +64,6 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* Split theme section */
     .split-wrap{
       margin-top: 18px;
       padding: 18px;
@@ -87,7 +85,6 @@
       text-align:left;
       overflow:hidden;
     }
-    /* image inside each box */
     .split-card img{
       width:100%;
       height: 160px;
@@ -116,7 +113,6 @@
       background: linear-gradient(to right, #c084fc, rgba(255,255,255,.18), rgba(255,255,255,.06));
     }
 
-    /* Map wrapper */
     .map-wrap{
       overflow: hidden;
       border-radius: 14px;
@@ -129,7 +125,7 @@
       display: block;
     }
 
-    /* ===== NEW: Social Preview Grid ===== */
+    /* ===== Social Preview Grid (FIXED) ===== */
     .social-preview{
       margin-top: 18px;
       border-radius: 16px;
@@ -138,7 +134,6 @@
       padding: 16px;
       text-align: left;
     }
-
     .social-head{
       display:flex;
       align-items:center;
@@ -147,20 +142,17 @@
       flex-wrap: wrap;
       margin-bottom: 12px;
     }
-
     .social-head h3{
       margin:0;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-size: 14px;
     }
-
     .social-actions{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
     }
-
     .social-btn{
       display:inline-flex;
       align-items:center;
@@ -188,7 +180,6 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 10px;
     }
-
     .social-tile{
       position:relative;
       overflow:hidden;
@@ -196,8 +187,9 @@
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.25);
       aspect-ratio: 1 / 1;
+      display:block;
+      text-decoration:none;
     }
-
     .social-tile img{
       width:100%;
       height:100%;
@@ -206,11 +198,9 @@
       transform: scale(1.01);
       transition: transform .18s ease;
     }
-
     .social-tile:hover img{
       transform: scale(1.05);
     }
-
     .social-badge{
       position:absolute;
       left: 8px;
@@ -229,15 +219,12 @@
     @media (max-width: 800px){
       .split-grid{ grid-template-columns: 1fr; }
       .split-card img{ height: 170px; }
-
       .social-grid{ grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 600px){
       .map-wrap iframe{ height: 320px; }
       .split-card img{ height: 150px; }
-
-      /* Make social preview impossible to miss on mobile */
       .social-preview{ padding: 14px; }
       .social-grid{ grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .social-btn{ padding: 10px 14px; }
@@ -281,14 +268,13 @@
         Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.
       </p>
 
-      <!-- Social links (still here) -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
         <span style="color:rgba(255,255,255,.35)">•</span>
         <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- ✅ NEW: Social Preview Grid (hard to miss) -->
+      <!-- ✅ Social Preview Grid (FIXED image src paths) -->
       <div class="social-preview" aria-label="Social media preview">
         <div class="social-head">
           <h3>Social Preview</h3>
@@ -298,30 +284,29 @@
           </div>
         </div>
 
-        <!-- Replace social1..social6 with your preferred preview images -->
         <div class="social-grid">
           <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social1.jpg" alt="Social preview 1">
+            <img src="social1.jpg" alt="Social preview 1" loading="lazy">
             <span class="social-badge">IG</span>
           </a>
           <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social2.jpg" alt="Social preview 2">
+            <img src="social2.jpg" alt="Social preview 2" loading="lazy">
             <span class="social-badge">IG</span>
           </a>
           <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social3.jpg" alt="Social preview 3">
+            <img src="social3.jpg" alt="Social preview 3" loading="lazy">
             <span class="social-badge">IG</span>
           </a>
           <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social4.jpg" alt="Social preview 4">
+            <img src="social4.jpg" alt="Social preview 4" loading="lazy">
             <span class="social-badge">FB</span>
           </a>
           <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social5.jpg" alt="Social preview 5">
+            <img src="social5.jpg" alt="Social preview 5" loading="lazy">
             <span class="social-badge">FB</span>
           </a>
           <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social6.jpg" alt="Social preview 6">
+            <img src="social6.jpg" alt="Social preview 6" loading="lazy">
             <span class="social-badge">FB</span>
           </a>
         </div>
@@ -339,13 +324,13 @@
 
         <div class="split-grid">
           <div class="split-card">
-            <img src="tattoogun.jpg" alt="Upstairs tattoo studio preview">
+            <img src="tattoogun.jpg" alt="Tattoo studio preview" loading="lazy">
             <h3>Upstairs • Tattoo Studio</h3>
             <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
 
           <div class="split-card">
-            <img src="bullets.jpg" alt="Downstairs gun store preview">
+            <img src="bullets.jpg" alt="Gun store preview" loading="lazy">
             <h3>Downstairs • Gun Store</h3>
             <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
@@ -367,8 +352,7 @@
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </div>
