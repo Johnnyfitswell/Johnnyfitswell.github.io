@@ -83,7 +83,21 @@
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       padding: 16px;
       text-align:left;
+      overflow:hidden;
     }
+
+    /* ✅ NEW: image inside each box */
+    .split-card img{
+      width:100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      display:block;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+    }
+
     .split-card h3{
       margin: 0 0 8px;
       letter-spacing: 1px;
@@ -116,9 +130,11 @@
     }
     @media (max-width: 800px){
       .split-grid{ grid-template-columns: 1fr; }
+      .split-card img{ height: 170px; }
     }
     @media (max-width: 600px){
       .map-wrap iframe{ height: 320px; }
+      .split-card img{ height: 150px; }
     }
   </style>
 </head>
@@ -169,7 +185,6 @@
       <div class="split-wrap">
         <h2 class="h2-tight">Two Worlds. One Spot.</h2>
 
-        <!-- Mobile-friendly: split into two lines on small screens via <br> -->
         <p class="note home-intro">
           Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
           <br class="mobile-only"><br class="mobile-only">
@@ -177,14 +192,21 @@
         </p>
 
         <div class="split-grid">
+
+          <!-- ✅ UPSTAIRS (tattoogun.jpg) -->
           <div class="split-card">
+            <img src="tattoogun.jpg" alt="Upstairs tattoo studio" loading="lazy">
             <h3>Upstairs • Tattoo Studio</h3>
             <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
+
+          <!-- ✅ DOWNSTAIRS (bullets.jpg) -->
           <div class="split-card">
+            <img src="bullets.jpg" alt="Downstairs gun store" loading="lazy">
             <h3>Downstairs • Gun Store</h3>
             <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
+
         </div>
 
         <div class="split-divider"></div>
