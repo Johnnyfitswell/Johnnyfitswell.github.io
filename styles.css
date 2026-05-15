@@ -182,10 +182,8 @@ footer{
 @media (max-width: 600px){
   .mobile-only{ display:inline; }
 
-  /* Slightly narrower content column for easier scanning */
   .container{ width: 88%; }
 
-  /* Reduce long lines + make paragraph easier to read */
   .hero{
     padding: 42px 0 22px;
   }
@@ -199,17 +197,12 @@ footer{
     max-width: 34ch;
   }
 
-  /* More breathing room per section */
   .section{ padding: 30px 0; }
-
-  /* Headings smaller so they don’t dominate */
   h2{ font-size: 22px; }
 
-  /* Make the topbar feel less bulky */
   .topbar-inner{ padding: 12px 0; }
   .menu-btn{ width: 42px; height: 42px; }
 
-  /* Reduce dense spacing from cards if present */
   .note{
     font-size: 14.5px;
     line-height: 1.75;
