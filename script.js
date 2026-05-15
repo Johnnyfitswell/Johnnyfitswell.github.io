@@ -1,4 +1,10 @@
-const menuBtn = document.getElementById("menuBtn");const menuBtn = document.getOverlay.classList.add("open");
+const menuBtn = document.getElementById("menuBtn");
+const menuOverlay = document.getElementById("menuOverlay");
+const menuClose = document.getElementById("menuClose");
+
+function openMenu(){
+  if(!menuOverlay) return;
+  menuOverlay.classList.add("open");
   menuOverlay.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
@@ -20,8 +26,3 @@ document.querySelectorAll(".menu-links a").forEach(a=>{
 document.addEventListener("keydown", (e)=>{
   if(e.key === "Escape") closeMenu();
 });
-const menuOverlay = document.getElementById("menuOverlay");
-const menuClose = document.getElementById("menuClose");
-
-function openMenu(){
-  if(!menuOverlay) return;
