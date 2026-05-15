@@ -172,18 +172,9 @@ footer{
   .mobile-only{ display:inline; }
   .container{ width: 88%; }
 
-  .hero{
-    padding: 42px 0 22px;
-  }
-  .hero h1{
-    font-size: 32px;
-    letter-spacing: 1.2px;
-  }
-  .hero p{
-    font-size: 15px;
-    line-height: 1.75;
-    max-width: 34ch;
-  }
+  .hero{ padding: 42px 0 22px; }
+  .hero h1{ font-size: 32px; letter-spacing: 1.2px; }
+  .hero p{ font-size: 15px; line-height: 1.75; max-width: 34ch; }
 
   .section{ padding: 30px 0; }
   h2{ font-size: 22px; }
@@ -191,8 +182,5 @@ footer{
   .topbar-inner{ padding: 12px 0; }
   .menu-btn{ width: 42px; height: 42px; }
 
-  .note{
-    font-size: 14.5px;
-    line-height: 1.75;
-  }
+  .note{ font-size: 14.5px; line-height: 1.75; }
 }
