@@ -24,10 +24,9 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
 }
 
-/* helper */
 .mobile-only{ display:none; }
 
-/* ===== Top bar ===== */
+/* Top bar */
 .topbar{
   position: sticky;
   top: 0;
@@ -36,21 +35,19 @@ a:hover{ text-decoration: underline; }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-
 .topbar-inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding: 14px 0;
 }
-
 .brand{
   font-weight: 900;
   letter-spacing: .5px;
   text-transform: uppercase;
 }
 
-/* Hamburger button */
+/* Hamburger */
 .menu-btn{
   width:44px;
   height:44px;
@@ -80,7 +77,7 @@ a:hover{ text-decoration: underline; }
 .menu-icon span:nth-child(2){ top:5px; }
 .menu-icon span:nth-child(3){ top:10px; }
 
-/* ===== Full-screen menu overlay ===== */
+/* Full-screen menu */
 .menu-overlay{
   position: fixed;
   inset: 0;
@@ -97,12 +94,10 @@ a:hover{ text-decoration: underline; }
   justify-content:space-between;
   padding: 18px 18px;
 }
-
 .menu-title{
   font-weight: 800;
   letter-spacing: .4px;
 }
-
 .menu-close{
   width:44px;
   height:44px;
@@ -121,13 +116,11 @@ a:hover{ text-decoration: underline; }
   text-align: center;
   padding: 10px 18px 30px;
 }
-
 .menu-links nav{
   display:flex;
   flex-direction:column;
   gap: 18px;
 }
-
 .menu-links a{
   font-size: clamp(28px, 5vw, 44px);
   font-weight: 300;
@@ -137,7 +130,7 @@ a:hover{ text-decoration: underline; }
 }
 .menu-links a:hover{ text-decoration: underline; }
 
-/* ===== Page structure ===== */
+/* Page structure */
 .hero{
   padding: 60px 0 30px;
   text-align: center;
@@ -152,25 +145,21 @@ a:hover{ text-decoration: underline; }
   color: var(--muted);
   line-height: 1.6;
 }
-
 .section{
   padding: 40px 0;
   border-top: 1px solid rgba(255,255,255,.08);
 }
-
 .note{
   margin: 0 0 18px;
   color: var(--muted);
   line-height: 1.6;
 }
-
 .h2-tight{
   margin:0 0 10px;
   font-size: 22px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
 footer{
   padding: 24px 0;
   text-align: center;
@@ -178,10 +167,9 @@ footer{
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
-/* ✅ MOBILE READABILITY FIXES */
+/* Mobile readability */
 @media (max-width: 600px){
   .mobile-only{ display:inline; }
-
   .container{ width: 88%; }
 
   .hero{
