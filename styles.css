@@ -60,6 +60,7 @@ a:hover{ text-decoration: underline; }
   justify-content:center;
 }
 .menu-btn:hover{ background: rgba(255,255,255,.10); }
+
 .menu-icon{
   width: 18px;
   height: 12px;
@@ -86,6 +87,7 @@ a:hover{ text-decoration: underline; }
   z-index: 2000;
 }
 .menu-overlay.open{ display: block; }
+
 .menu-top{
   display:flex;
   align-items:center;
@@ -106,6 +108,7 @@ a:hover{ text-decoration: underline; }
   font-size: 22px;
 }
 .menu-close:hover{ background: rgba(0,0,0,.08); }
+
 .menu-links{
   height: calc(100vh - 80px);
   display: grid;
@@ -181,4 +184,3 @@ footer{
 
   .note{ font-size: 14.5px; line-height: 1.75; }
 }
-``
