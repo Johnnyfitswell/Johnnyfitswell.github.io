@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Home hero texture */
     .home-hero{
       position: relative;
       padding: 70px 0 40px;
@@ -64,6 +63,102 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
+    /* ===== Social Preview (no images, direct post links) ===== */
+    .social-preview{
+      margin-top: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+      text-align: left;
+    }
+    .social-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .social-head h3{
+      margin:0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .social-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .social-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      font-weight: 800;
+      letter-spacing: .3px;
+      text-decoration:none;
+    }
+    .social-btn:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .post-tile{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      padding: 14px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration:none;
+      min-height: 110px;
+    }
+    .post-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .platform-pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .post-title{
+      font-weight: 900;
+      letter-spacing: .4px;
+      color:#fff;
+      margin:0;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    .post-desc{
+      margin:0;
+      color: rgba(255,255,255,.74);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .post-tile:hover{
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+    }
+
+    /* Two worlds section */
     .split-wrap{
       margin-top: 18px;
       padding: 18px;
@@ -125,115 +220,17 @@
       display: block;
     }
 
-    /* ===== Social Preview Grid (FIXED) ===== */
-    .social-preview{
-      margin-top: 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      padding: 16px;
-      text-align: left;
-    }
-    .social-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .social-head h3{
-      margin:0;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-    .social-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .social-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:#fff;
-      font-weight: 800;
-      letter-spacing: .3px;
-      text-decoration:none;
-    }
-    .social-btn:hover{
-      background: rgba(255,255,255,.10);
-      text-decoration:none;
-    }
-    .social-btn.primary{
-      border-color: rgba(192,132,252,.45);
-      box-shadow: 0 0 18px rgba(192,132,252,.20);
-    }
-
-    .social-grid{
-      display:grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-    }
-    .social-tile{
-      position:relative;
-      overflow:hidden;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      aspect-ratio: 1 / 1;
-      display:block;
-      text-decoration:none;
-    }
-    .social-tile img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.01);
-      transition: transform .18s ease;
-    }
-    .social-tile:hover img{
-      transform: scale(1.05);
-    }
-    .social-badge{
-      position:absolute;
-      left: 8px;
-      bottom: 8px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.55);
-      color:#fff;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-    }
-
     @media (max-width: 800px){
       .split-grid{ grid-template-columns: 1fr; }
-      .split-card img{ height: 170px; }
-      .social-grid{ grid-template-columns: repeat(3, 1fr); }
+      .social-grid{ grid-template-columns: 1fr; }
     }
-
     @media (max-width: 600px){
       .map-wrap iframe{ height: 320px; }
-      .split-card img{ height: 150px; }
-      .social-preview{ padding: 14px; }
-      .social-grid{ grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .social-btn{ padding: 10px 14px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
@@ -263,10 +260,7 @@
     <section class="home-hero">
       <div class="tagline">Art Above • Steel Below</div>
       <h1 class="hero-title">Johnny Fitswell</h1>
-
-      <p class="hero-sub">
-        Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.
-      </p>
+      <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
@@ -274,49 +268,71 @@
         <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- ✅ Social Preview Grid (FIXED image src paths) -->
-      <div class="social-preview" aria-label="Social media preview">
+      <!-- ✅ Social Preview as direct post links (no images stored) -->
+      <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
           <div class="social-actions">
-            <a class="social-btn primary" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">View Instagram</a>
+            <a class="social-btn" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">View Instagram</a>
             <a class="social-btn" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">View Facebook</a>
           </div>
         </div>
 
+        <!-- 🔧 Replace the href values below with REAL post URLs -->
         <div class="social-grid">
-          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social1.jpg" alt="Social preview 1" loading="lazy">
-            <span class="social-badge">IG</span>
+          <a class="post-tile" href="PASTE_INSTAGRAM_POST_URL_1" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">Latest Ink</p>
+              <span class="platform-pill">IG</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Instagram.</p>
           </a>
-          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social2.jpg" alt="Social preview 2" loading="lazy">
-            <span class="social-badge">IG</span>
+
+          <a class="post-tile" href="PASTE_INSTAGRAM_POST_URL_2" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">Color Work</p>
+              <span class="platform-pill">IG</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Instagram.</p>
           </a>
-          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
-            <img src="social3.jpg" alt="Social preview 3" loading="lazy">
-            <span class="social-badge">IG</span>
+
+          <a class="post-tile" href="PASTE_INSTAGRAM_POST_URL_3" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">Studio Piece</p>
+              <span class="platform-pill">IG</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Instagram.</p>
           </a>
-          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social4.jpg" alt="Social preview 4" loading="lazy">
-            <span class="social-badge">FB</span>
+
+          <a class="post-tile" href="PASTE_FACEBOOK_POST_URL_1" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">Update</p>
+              <span class="platform-pill">FB</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Facebook.</p>
           </a>
-          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social5.jpg" alt="Social preview 5" loading="lazy">
-            <span class="social-badge">FB</span>
+
+          <a class="post-tile" href="PASTE_FACEBOOK_POST_URL_2" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">Shop News</p>
+              <span class="platform-pill">FB</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Facebook.</p>
           </a>
-          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
-            <img src="social6.jpg" alt="Social preview 6" loading="lazy">
-            <span class="social-badge">FB</span>
+
+          <a class="post-tile" href="PASTE_FACEBOOK_POST_URL_3" target="_blank" rel="noopener">
+            <div class="post-top">
+              <p class="post-title">New Work</p>
+              <span class="platform-pill">FB</span>
+            </div>
+            <p class="post-desc">Tap to view the post on Facebook.</p>
           </a>
         </div>
       </div>
 
-      <!-- Two Worlds section -->
       <div class="split-wrap">
         <h2 class="h2-tight">Two Worlds. One Spot.</h2>
-
-        <p class="note home-intro">
+        <p class="note">
           Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
           <br class="mobile-only"><br class="mobile-only">
           Downstairs is precision and gear. Different energy — same location.
@@ -324,13 +340,13 @@
 
         <div class="split-grid">
           <div class="split-card">
-            <img src="tattoogun.jpg" alt="Tattoo studio preview" loading="lazy">
+            <img src="tattoogun.jpg" alt="Upstairs tattoo studio" />
             <h3>Upstairs • Tattoo Studio</h3>
             <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
 
           <div class="split-card">
-            <img src="bullets.jpg" alt="Gun store preview" loading="lazy">
+            <img src="bullets.jpg" alt="Downstairs gun store" />
             <h3>Downstairs • Gun Store</h3>
             <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
@@ -343,16 +359,12 @@
     <section class="section">
       <h2>Location</h2>
       <p class="note">Find us here:</p>
-
       <div class="map-wrap">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1032.6881658014206!2d-98.41190393036196!3d29.547914298448614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c8b69a36c137b%3A0x49975085ec7ab7ad!2s11950%20Nacogdoches%20Rd%2C%20San%20Antonio%2C%20TX%2078217!5e1!3m2!1sen!2sus!4v1778725474796!5m2!1sen!2sus"
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen=""></iframe>
       </div>
     </section>
   </div>
