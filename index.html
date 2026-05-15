@@ -52,6 +52,7 @@
       line-height: 1.7;
     }
 
+    /* Social links row */
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -64,6 +65,7 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
+    /* Split theme section */
     .split-wrap{
       margin-top: 18px;
       padding: 18px;
@@ -85,8 +87,7 @@
       text-align:left;
       overflow:hidden;
     }
-
-    /* ✅ NEW: image inside each box */
+    /* image inside each box */
     .split-card img{
       width:100%;
       height: 160px;
@@ -97,7 +98,6 @@
       margin-bottom: 12px;
       box-shadow: 0 10px 26px rgba(0,0,0,.35);
     }
-
     .split-card h3{
       margin: 0 0 8px;
       letter-spacing: 1px;
@@ -116,7 +116,7 @@
       background: linear-gradient(to right, #c084fc, rgba(255,255,255,.18), rgba(255,255,255,.06));
     }
 
-    /* Map wrapper (responsive) */
+    /* Map wrapper */
     .map-wrap{
       overflow: hidden;
       border-radius: 14px;
@@ -128,13 +128,119 @@
       border: 0;
       display: block;
     }
+
+    /* ===== NEW: Social Preview Grid ===== */
+    .social-preview{
+      margin-top: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+      text-align: left;
+    }
+
+    .social-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .social-head h3{
+      margin:0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .social-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .social-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      font-weight: 800;
+      letter-spacing: .3px;
+      text-decoration:none;
+    }
+    .social-btn:hover{
+      background: rgba(255,255,255,.10);
+      text-decoration:none;
+    }
+    .social-btn.primary{
+      border-color: rgba(192,132,252,.45);
+      box-shadow: 0 0 18px rgba(192,132,252,.20);
+    }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .social-tile{
+      position:relative;
+      overflow:hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      aspect-ratio: 1 / 1;
+    }
+
+    .social-tile img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.01);
+      transition: transform .18s ease;
+    }
+
+    .social-tile:hover img{
+      transform: scale(1.05);
+    }
+
+    .social-badge{
+      position:absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.55);
+      color:#fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 800px){
       .split-grid{ grid-template-columns: 1fr; }
       .split-card img{ height: 170px; }
+
+      .social-grid{ grid-template-columns: repeat(3, 1fr); }
     }
+
     @media (max-width: 600px){
       .map-wrap iframe{ height: 320px; }
       .split-card img{ height: 150px; }
+
+      /* Make social preview impossible to miss on mobile */
+      .social-preview{ padding: 14px; }
+      .social-grid{ grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .social-btn{ padding: 10px 14px; }
     }
   </style>
 </head>
@@ -150,7 +256,7 @@
     </div>
   </div>
 
-  <!-- FULLSCREEN MENU (NO ABOUT) -->
+  <!-- MENU (NO ABOUT) -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-top">
       <div class="menu-title">JOHNNY FITSWELL</div>
@@ -175,13 +281,53 @@
         Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.
       </p>
 
-      <!-- Social ABOVE Location -->
+      <!-- Social links (still here) -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
         <span style="color:rgba(255,255,255,.35)">•</span>
-        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
+      <!-- ✅ NEW: Social Preview Grid (hard to miss) -->
+      <div class="social-preview" aria-label="Social media preview">
+        <div class="social-head">
+          <h3>Social Preview</h3>
+          <div class="social-actions">
+            <a class="social-btn primary" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">View Instagram</a>
+            <a class="social-btn" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">View Facebook</a>
+          </div>
+        </div>
+
+        <!-- Replace social1..social6 with your preferred preview images -->
+        <div class="social-grid">
+          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
+            <img src="social1.jpg" alt="Social preview 1">
+            <span class="social-badge">IG</span>
+          </a>
+          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
+            <img src="social2.jpg" alt="Social preview 2">
+            <span class="social-badge">IG</span>
+          </a>
+          <a class="social-tile" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">
+            <img src="social3.jpg" alt="Social preview 3">
+            <span class="social-badge">IG</span>
+          </a>
+          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
+            <img src="social4.jpg" alt="Social preview 4">
+            <span class="social-badge">FB</span>
+          </a>
+          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
+            <img src="social5.jpg" alt="Social preview 5">
+            <span class="social-badge">FB</span>
+          </a>
+          <a class="social-tile" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">
+            <img src="social6.jpg" alt="Social preview 6">
+            <span class="social-badge">FB</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Two Worlds section -->
       <div class="split-wrap">
         <h2 class="h2-tight">Two Worlds. One Spot.</h2>
 
@@ -192,21 +338,17 @@
         </p>
 
         <div class="split-grid">
-
-          <!-- ✅ UPSTAIRS (tattoogun.jpg) -->
           <div class="split-card">
-            <img src="tattoogun.jpg" alt="Upstairs tattoo studio" loading="lazy">
+            <img src="tattoogun.jpg" alt="Upstairs tattoo studio preview">
             <h3>Upstairs • Tattoo Studio</h3>
             <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
 
-          <!-- ✅ DOWNSTAIRS (bullets.jpg) -->
           <div class="split-card">
-            <img src="bullets.jpg" alt="Downstairs gun store" loading="lazy">
+            <img src="bullets.jpg" alt="Downstairs gun store preview">
             <h3>Downstairs • Gun Store</h3>
             <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
-
         </div>
 
         <div class="split-divider"></div>
