@@ -1,4 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {document.addEventListener("overflow = "hidden";
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const menuClose = document.getElementById("menuClose");
+
+  function openMenu(){
+    if(!menuOverlay) return;
+    menuOverlay.classList.add("open");
+    menuOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
   }
 
   function closeMenu(){
@@ -19,11 +28,3 @@ document.addEventListener("DOMContentLoaded", () => {document.addEventListener("
     if(e.key === "Escape") closeMenu();
   });
 });
-  const menuBtn = document.getElementById("menuBtn");
-  const menuOverlay = document.getElementById("menuOverlay");
-  const menuClose = document.getElementById("menuClose");
-
-  function openMenu(){
-    if(!menuOverlay) return;
-    menuOverlay.classList.add("open");
-    menuOverlay.setAttribute("aria-hidden", "false");
