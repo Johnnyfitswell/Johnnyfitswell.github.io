@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
+    /* Home hero texture */
     .home-hero{
       position: relative;
       padding: 70px 0 40px;
@@ -50,6 +51,7 @@
       color: rgba(255,255,255,.78);
       line-height: 1.7;
     }
+
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -62,7 +64,7 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* Social preview container */
+    /* ===== Social Preview (real previews + mobile swipe) ===== */
     .social-preview{
       margin-top: 18px;
       border-radius: 16px;
@@ -106,12 +108,13 @@
     }
     .social-btn:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
 
-    /* Embed grid */
+    /* Desktop/tablet layout */
     .embed-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
+
     .embed-card{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
@@ -119,6 +122,7 @@
       padding: 10px;
       overflow: hidden;
     }
+
     .embed-label{
       display:flex;
       justify-content:space-between;
@@ -148,32 +152,32 @@
     .pill.ig{ box-shadow: 0 0 16px rgba(192,132,252,.18); }
     .pill.fb{ box-shadow: 0 0 16px rgba(120,180,255,.18); }
 
-    /* FB fallback button (shows if embed can’t render) */
-    .fb-fallback{
-      margin: 8px 6px 6px;
-      padding: 12px;
+    /* Facebook iframe wrappers for clean sizing */
+    .fb-embed{
+      width: 100%;
       border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.20);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.80);
-      font-size: 13px;
-      line-height: 1.5;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.15);
     }
-    .fb-fallback a{
-      display:inline-block;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-weight: 900;
-      letter-spacing: .3px;
-      text-decoration:none;
-      color:#fff;
+    .fb-embed iframe{
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display:block;
     }
-    .fb-fallback a:hover{ background: rgba(255,255,255,.10); }
+    /* Reel aspect ratio (approx 9:16) */
+    .ratio-reel{
+      aspect-ratio: 9 / 16;
+      min-height: 420px;
+    }
+    /* Photo/post aspect ratio (approx matches your 500x723 embed) */
+    .ratio-post{
+      aspect-ratio: 500 / 723;
+      min-height: 520px;
+    }
 
-    /* MOBILE: swipe strip */
+    /* MOBILE: swipe strip (so they don’t stack) */
     @media (max-width: 600px){
       .embed-grid{
         grid-template-columns: unset;
@@ -187,6 +191,7 @@
         -webkit-overflow-scrolling: touch;
       }
       .embed-card{ scroll-snap-align: start; }
+
       .social-preview::after{
         content:"Swipe →";
         position:absolute;
@@ -201,9 +206,12 @@
         padding: 6px 10px;
         border-radius: 999px;
       }
+
+      .ratio-reel{ min-height: 460px; }
+      .ratio-post{ min-height: 560px; }
     }
 
-    /* Two worlds */
+    /* Two worlds section */
     .split-wrap{
       margin-top: 18px;
       padding: 18px;
@@ -274,9 +282,6 @@
 </head>
 
 <body>
-  <!-- Required for Facebook embeds -->
-  <div id="fb-root"></div>
-
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
@@ -314,6 +319,7 @@
         <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
+      <!-- ✅ Social preview with REAL previews -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
@@ -324,8 +330,7 @@
         </div>
 
         <div class="embed-grid">
-
-          <!-- Instagram embeds (official method) -->
+          <!-- Instagram embeds (official method) [2](https://stackoverflow.com/questions/37660331/render-instagram-blockquote)[3](https://platform.instagram.com/en_US/embeds.js/) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
@@ -341,28 +346,39 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- Facebook embeds (official method requires real post permalinks) -->
+          <!-- Facebook embeds via iframes (real previews from Facebook plugins) [1](https://www.swiftorial.com/swiftlessons/third-party-integrations/embedding-third-party-content/embedding-facebook-posts/) -->
           <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Post #1</span><span class="pill fb">FB</span></div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" data-width="500 link).
-              <a href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
+            <div class="embed-label"><span class="label">Facebook Reel</span><span class="pill fb">FB</span></div>
+            <div class="fb-embed ratio-reel">
+              <iframe
+                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1294179458685635%2F&show_text=false&width=267&t=0"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
           <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Reel #2</span><span class="pill fb">FB</span></div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" data-width="500          If the preview doesn't load, replace this with the reel’s original permalink URL.
-              <a href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
+            <div class="embed-label"><span class="label">Facebook Photo Post</span><span class="pill fb">FB</span></div>
+            <div class="fb-embed ratio-post">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
           <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Reel #3</span><span class="pill fb">FB</span></div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" data-width="500          If the preview doesn't load, replace this with the reel’s original permalink URL.
-              <a href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
+            <div class="embed-label"><span class="label">Facebook Reel</span><span class="pill fb">FB</span></div>
+            <div class="fb-embed ratio-reel">
+              <iframe
+                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4101623246815582%2F&show_text=false&width=267&t=0"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -409,11 +425,7 @@
 
   <script src="script.js"></script>
 
-  <!-- Instagram embed script (renders blockquote embeds) -->
-  <script async src="https://platform.instagram.com/en_US/embeds.js"></script> [2](https://platform.instagram.com/en_US/embeds.js/)
-
-  <!-- Facebook SDK (renders fb-post embeds) -->
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v25.08278/automatically-embed-newest-facebook-posts-on-my-website)[4](https://www.swiftorial.com/swiftlessons/third-party-integrations/embedding-third-party-content/embedding-facebook-posts/)
+  <!-- Instagram embed script (renders blockquote embeds) [2](https://stackoverflow.com/questions/37660331/render-instagram-blockquote)[3](https://platform.instagram.com/en_US/embeds.js/) -->
+  <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
