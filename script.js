@@ -4,11 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuClose = document.getElementById("menuClose");
 
   function openMenu(){
+    if(!menuOverlay) return;
     menuOverlay.classList.add("open");
+    menuOverlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
+
   function closeMenu(){
+    if(!menuOverlay) return;
     menuOverlay.classList.remove("open");
+    menuOverlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
 
