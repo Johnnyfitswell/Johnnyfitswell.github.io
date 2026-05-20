@@ -6,32 +6,23 @@
   --border:rgba(255,255,255,.12);
 }
 
-/* ✅ BACKGROUND FIX (LOCKED) */
-html, body{
-  background: radial-gradient(circle at top, #1a1025, var(--bg)) !important;
-  background-color: var(--bg) !important;
-  color: var(--text) !important;
-  margin: 0;
-  padding: 0;
-}
-
-/* keep normal box sizing */
 *{ box-sizing:border-box; }
-
 html{ scroll-behavior:smooth; }
 
 body{
+  margin:0;
   font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1a1025, var(--bg));
+  color: var(--text);
 }
 
-/* Links */
 a{ color: inherit; text-decoration:none; }
 a:hover{ text-decoration: underline; }
 
 .container{ width:min(1000px,92vw); margin:0 auto; }
 .dot{ color: rgba(255,255,255,.35); }
 
-/* TOP BAR */
+/* ===== TOP BAR ===== */
 .topbar{
   position: sticky;
   top: 0;
@@ -46,11 +37,16 @@ a:hover{ text-decoration: underline; }
   justify-content:space-between;
   padding: 14px 0;
 }
-.brand{ font-weight:900; letter-spacing:.5px; text-transform:uppercase; }
+.brand{
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
 
 /* Hamburger */
 .menu-btn{
-  width:44px; height:44px;
+  width:44px;
+  height:44px;
   border-radius:12px;
   border:1px solid var(--border);
   background: rgba(255,255,255,.06);
@@ -70,7 +66,7 @@ a:hover{ text-decoration: underline; }
 .menu-icon span:nth-child(2){ top:5px; }
 .menu-icon span:nth-child(3){ top:10px; }
 
-/* Menu overlay */
+/* ===== MENU OVERLAY ===== */
 .menu-overlay{
   position: fixed;
   inset: 0;
@@ -80,16 +76,26 @@ a:hover{ text-decoration: underline; }
   z-index: 20000;
 }
 .menu-overlay.open{ display:block; }
-.menu-top{ display:flex; justify-content:space-between; align-items:center; padding:18px; }
+
+.menu-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 18px 18px;
+}
 .menu-title{ font-weight:800; letter-spacing:.4px; }
+
 .menu-close{
-  width:44px; height:44px;
+  width:44px;
+  height:44px;
   border-radius:12px;
   border:1px solid rgba(0,0,0,.12);
   background: rgba(0,0,0,.04);
   cursor:pointer;
   font-size:22px;
 }
+.menu-close:hover{ background: rgba(0,0,0,.08); }
+
 .menu-links{
   height: calc(100vh - 80px);
   display:grid;
@@ -105,8 +111,11 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   color:#111;
 }
+.menu-links a:hover{ text-decoration: underline; }
 
-/* Banner container (leave as-is—no size change here) */
+/* =========================================================
+   ✅ BANNER (TRUE HEADER) — BANNER IMAGE FIXED (BANNER ONLY)
+   ========================================================= */
 .banner{
   width:100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -122,15 +131,33 @@ a:hover{ text-decoration: underline; }
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  background: rgba(0,0,0,.18);
+
+  /* ✅ THIS IS THE FIX: the banner image was missing */
+  background-image: url("his_tattoo_name_is_johnnyfit.png");
+  background-repeat: no-repeat;
+
+  /* ✅ Fill the border (not tiny in the middle) */
+  background-size: cover;
+
+  /* ✅ Keep name + “Tattoo Artist” visible */
+  background-position: center 60%;
+
+  background-color: rgba(0,0,0,.18);
 }
 @media (max-width: 600px){
   .banner-inner{ padding: 10px 0; }
-  .banner-image{ height: 140px; border-radius: 14px; }
+  .banner-image{
+    height: 140px;
+    border-radius: 14px;
+    background-position: center 62%;
+  }
 }
 
-/* HERO */
-.home-hero{ padding: 40px 0 18px; text-align:center; }
+/* ===== HERO ===== */
+.home-hero{
+  padding: 40px 0 18px;
+  text-align:center;
+}
 .tagline{
   display:inline-block;
   padding:8px 14px;
@@ -165,7 +192,7 @@ a:hover{ text-decoration: underline; }
 }
 .hero-social a{ color: var(--accent); }
 
-/* SOCIAL PREVIEW (unchanged) */
+/* ===== SOCIAL PREVIEW (UNCHANGED) ===== */
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -181,6 +208,7 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   font-size:13px;
 }
+
 .embed-strip{
   display:grid;
   grid-auto-flow: column;
@@ -191,6 +219,12 @@ a:hover{ text-decoration: underline; }
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling: touch;
 }
+.embed-strip::-webkit-scrollbar{ height:10px; }
+.embed-strip::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);
+  border-radius:999px;
+}
+
 .embed-card{
   scroll-snap-align:start;
   border-radius:14px;
@@ -250,17 +284,8 @@ a:hover{ text-decoration: underline; }
   transform: translateY(-70px);
   height: calc(100% + 70px);
 }
-@media (max-width: 600px){
-  .embed-strip{ grid-auto-columns: 78%; }
-  .preview-frame{ height: 280px; }
-  .fb-crop iframe{
-    transform: translateY(-60px);
-    height: calc(100% + 60px);
-  }
-  .container{ width:88%; }
-}
 
-/* TWO WORLDS (unchanged) */
+/* ===== TWO WORLDS (UNCHANGED) ===== */
 .split-wrap{
   margin-top:22px;
   padding:18px;
@@ -291,8 +316,25 @@ a:hover{ text-decoration: underline; }
   margin-bottom:12px;
   box-shadow:0 10px 26px rgba(0,0,0,.35);
 }
+.split-card h3{
+  margin:0 0 8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-size:14px;
+}
+.split-card p{
+  margin:0;
+  color: rgba(255,255,255,.75);
+  line-height:1.6;
+}
+.split-divider{
+  margin-top:18px;
+  height:3px;
+  border-radius:999px;
+  background: linear-gradient(to right, var(--accent), rgba(255,255,255,.18), rgba(255,255,255,.06));
+}
 
-/* Location */
+/* ===== LOCATION (UNCHANGED) ===== */
 .section{
   padding:40px 0;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -311,15 +353,27 @@ a:hover{ text-decoration: underline; }
   border:0;
   display:block;
 }
-@media (max-width: 600px){
-  .map-wrap iframe{ height:320px; }
-}
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer{
   padding:24px 0;
   text-align:center;
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px){
+  .split-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 600px){
+  .container{ width:88%; }
+  .embed-strip{ grid-auto-columns: 78%; }
+  .preview-frame{ height: 280px; }
+  .fb-crop iframe{
+    transform: translateY(-60px);
+    height: calc(100% + 60px);
+  }
+  .map-wrap iframe{ height:320px; }
 }
 ``
