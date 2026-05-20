@@ -114,7 +114,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-
     .embed-card{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
@@ -122,7 +121,6 @@
       padding: 10px;
       overflow: hidden;
     }
-
     .embed-label{
       display:flex;
       justify-content:space-between;
@@ -152,7 +150,7 @@
     .pill.ig{ box-shadow: 0 0 16px rgba(192,132,252,.18); }
     .pill.fb{ box-shadow: 0 0 16px rgba(120,180,255,.18); }
 
-    /* Facebook iframe wrappers for clean sizing */
+    /* FB iframe wrappers for clean sizing */
     .fb-embed{
       width: 100%;
       border-radius: 14px;
@@ -166,13 +164,16 @@
       border: 0;
       display:block;
     }
-    /* Reel aspect ratio (approx 9:16) */
-    .ratio-reel{
-      aspect-ratio: 9 / 16;
-      min-height: 420px;
-    }
-    /* Photo/post aspect ratio (approx matches your 500x723 embed) */
+    /* Post aspect ratios */
     .ratio-post{
+      aspect-ratio: 500 / 728;
+      min-height: 540px;
+    }
+    .ratio-photo{
+      aspect-ratio: 500 / 640;
+      min-height: 500px;
+    }
+    .ratio-photoTall{
       aspect-ratio: 500 / 723;
       min-height: 520px;
     }
@@ -207,8 +208,9 @@
         border-radius: 999px;
       }
 
-      .ratio-reel{ min-height: 460px; }
-      .ratio-post{ min-height: 560px; }
+      .ratio-post{ min-height: 600px; }
+      .ratio-photo{ min-height: 560px; }
+      .ratio-photoTall{ min-height: 600px; }
     }
 
     /* Two worlds section */
@@ -330,7 +332,7 @@
         </div>
 
         <div class="embed-grid">
-          <!-- Instagram embeds (official method) [2](https://stackoverflow.com/questions/37660331/render-instagram-blockquote)[3](https://platform.instagram.com/en_US/embeds.js/) -->
+          <!-- Instagram embeds -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
@@ -346,35 +348,43 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- Facebook embeds via iframes (real previews from Facebook plugins) [1](https://www.swiftorial.com/swiftlessons/third-party-integrations/embedding-third-party-content/embedding-facebook-posts/) -->
+          <!-- ✅ Facebook Post (pfbid...) -->
           <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Reel</span><span class="pill fb">FB</span></div>
-            <div class="fb-embed ratio-reel">
-              <iframe
-                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1294179458685635%2F&show_text=false&width=267&t=0"
-                scrolling="no"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
-
-          <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Photo Post</span><span class="pill fb">FB</span></div>
+            <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
             <div class="fb-embed ratio-post">
               <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500"
+                style="border:none;overflow:hidden"
                 scrolling="no"
+                frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
+          <!-- ✅ Facebook Photo (247995...) -->
           <div class="embed-card">
-            <div class="embed-label"><span class="label">Facebook Reel</span><span class="pill fb">FB</span></div>
-            <div class="fb-embed ratio-reel">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="fb-embed ratio-photo">
               <iframe
-                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4101623246815582%2F&show_text=false&width=267&t=0"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500"
+                style="border:none;overflow:hidden"
                 scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <!-- ✅ Facebook Photo (269072...) -->
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="fb-embed ratio-photoTall">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
@@ -425,7 +435,7 @@
 
   <script src="script.js"></script>
 
-  <!-- Instagram embed script (renders blockquote embeds) [2](https://stackoverflow.com/questions/37660331/render-instagram-blockquote)[3](https://platform.instagram.com/en_US/embeds.js/) -->
+  <!-- Instagram embed script -->
   <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
