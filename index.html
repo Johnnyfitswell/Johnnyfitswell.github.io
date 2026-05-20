@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Home</title>
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -12,6 +13,7 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
+
       <button id="menuBtn" class="menu-btn" aria-label="Open menu">
         <div class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></div>
       </button>
@@ -34,35 +36,133 @@
     </div>
   </div>
 
-  <!-- ✅ HEADER BANNER -->
-  <header class="site-banner" aria-label="Johnny Fitswell Banner">
-    <a href="index.html" class="site-banner-link" aria-label="Go to Home">
-      <img
-        src="his_tattoo_name_is_johnnyfit.png"
-        alt="Johnny Fitswell — Tattoo Artist banner"
-        class="site-banner-img"
-        loading="eager"
-      />
-    </a>
+  <!-- ✅ TRUE BANNER HEADER (cropped wide) -->
+  <header class="banner" aria-label="Johnny Fitswell Banner">
+    <div class="banner-inner">
+      <div class="banner-image" role="img" aria-label="Johnny Fitswell banner artwork"></div>
+    </div>
   </header>
 
   <!-- PAGE CONTENT -->
   <div class="container">
+
     <section class="home-hero">
       <div class="tagline">Art Above • Steel Below</div>
       <h1 class="hero-title">Johnny Fitswell</h1>
       <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
-      <!-- Social links only here -->
+      <!-- Links ONLY here (no duplicates in preview) -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
         <span class="dot">•</span>
         <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- Your existing Social Preview + Two Worlds + Map sections remain as-is.
-           (Keeping your current working layout intact.) -->
+      <!-- SOCIAL PREVIEW (desktop + mobile scroll strip, sizes consistent) -->
+      <div class="social-preview">
+        <div class="social-head">
+          <h3>Social Preview</h3>
+        </div>
+
+        <div class="embed-strip">
+
+          <!-- Instagram previews (do not change) -->
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Instagram Reel #2</span><span class="pill ig">IG</span></div>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRVBKmckf-X/" data-instgrm-version="14"></blockquote>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Instagram Post #3</span><span class="pill ig">IG</span></div>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
+            </div>
+          </div>
+
+          <!-- Facebook (cleaned: show_text=false + crop) -->
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
+            <div class="preview-frame fb-crop">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=false&width=380"
+                scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="preview-frame fb-crop">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=380"
+                scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="preview-frame fb-crop">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=false&width=380"
+                scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TWO WORLDS (same as before; cards stay normal size) -->
+      <div class="split-wrap">
+        <h2 class="h2-tight">Two Worlds. One Spot.</h2>
+        <p class="note">
+          Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.<br><br>
+          Downstairs is precision and gear. Different energy — same location.
+        </p>
+
+        <div class="split-grid">
+          <div class="split-card">
+            <img src="tattoogun.jpg" alt="Upstairs preview">
+            <h3>Upstairs • Tattoo Studio</h3>
+            <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
+          </div>
+
+          <div class="split-card">
+            <img src="bullets.jpg" alt="Downstairs preview">
+            <h3>Downstairs • Gun Store</h3>
+            <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
+          </div>
+        </div>
+
+        <div class="split-divider"></div>
+      </div>
+
     </section>
+
+    <!-- LOCATION -->
+    <section class="section">
+      <h2>Location</h2>
+      <p class="note">Find us here:</p>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1032.6881658014206!2d-98.41190393036196!3d29.547914298448614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c8b69a36c137b%3A0x49975085ec7ab7ad!2s11950%20Nacogdoches%20Rd%2C%20San%20Antonio%2C%20TX%2078217!5e1!3m2!1sen!2sus!4v1778725474796!5m2!1sen!2sus"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
   </div>
 
   <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
