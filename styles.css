@@ -1,15 +1,5 @@
 :root{
-11,11,.75);  --bg:#0b0b0b;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.topbar-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 14px 0;
-}
-.brand{ font-weight:900; letter-spacing:.5px; text-transform:uppercase; }
+ text-transform:uppercase; }  --bg:#0b0b0b;
 
 /* Hamburger */
 .menu-btn{
@@ -69,7 +59,7 @@
   color:#111;
 }
 
-/* ✅ TRUE BANNER HEADER (FILLS BORDER + READABLE LOGO) */
+/* Banner container */
 .banner{
   width:100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -80,60 +70,20 @@
   margin: 0 auto;
   padding: 14px 0;
 }
-
-/* This is the box you already have on the pages */
 .banner-image{
-  height: 220px;              /* keep header same size */
+  height: 220px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  position: relative;
-  overflow: hidden;
-  background: rgba(0,0,0,.20);
+  background: rgba(0,0,0,.18);
 }
-
-/* Background layer: fills banner fully */
-.banner-image::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("his_tattoo_name_is_johnnyfit.png");
-  background-size: cover;
-  background-position: center;
-  filter: blur(14px) brightness(.55) saturate(1.05);
-  transform: scale(1.08);
-}
-
-/* Foreground layer: shows the full logo BIGGER (not tiny) */
-.banner-image::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("his_tattoo_name_is_johnnyfit.png");
-  background-repeat: no-repeat;
-
-  /* ✅ This is the key: make it big but still readable */
-  background-size: 115% auto;           /* bigger than before */
-  background-position: center 55%;      /* favors name + “Tattoo Artist” area */
-  filter: drop-shadow(0 10px 25px rgba(0,0,0,.45));
-}
-
-/* Mobile banner height stays smaller */
 @media (max-width: 600px){
   .banner-inner{ padding: 10px 0; }
   .banner-image{ height: 140px; border-radius: 14px; }
-  .banner-image::before{ filter: blur(12px) brightness(.55) saturate(1.05); }
-  .banner-image::after{
-    background-size: 130% auto;          /* a bit bigger on mobile */
-    background-position: center 58%;
-  }
 }
 
 /* HERO */
-.home-hero{
-  padding: 40px 0 18px;
-  text-align:center;
-}
+.home-hero{ padding: 40px 0 18px; text-align:center; }
 .tagline{
   display:inline-block;
   padding:8px 14px;
@@ -168,7 +118,7 @@
 }
 .hero-social a{ color: var(--accent); }
 
-/* Social Preview (leave your existing section behavior intact) */
+/* SOCIAL PREVIEW (unchanged layout) */
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -184,8 +134,118 @@
   text-transform:uppercase;
   font-size:13px;
 }
+.embed-strip{
+  display:grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 380px;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.embed-card{
+  scroll-snap-align:start;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25);
+  padding:8px;
+  overflow:hidden;
+}
+.embed-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:6px 6px 8px;
+}
+.label{
+  font-weight:900;
+  letter-spacing:.35px;
+  text-transform:uppercase;
+  font-size:11px;
+  color: rgba(255,255,255,.85);
+}
+.pill{
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
+.pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
 
-/* Map + footer */
+.preview-frame{
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.12);
+  height: 320px;
+}
+.preview-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.preview-frame .instagram-media{
+  margin:0 !important;
+  min-width:0 !important;
+  width:100% !important;
+  max-width:100% !important;
+}
+.fb-crop iframe{
+  transform: translateY(-70px);
+  height: calc(100% + 70px);
+}
+@media (max-width: 600px){
+  .embed-strip{ grid-auto-columns: 78%; }
+  .preview-frame{ height: 280px; }
+  .fb-crop iframe{
+    transform: translateY(-60px);
+    height: calc(100% + 60px);
+  }
+  .container{ width:88%; }
+}
+
+/* TWO WORLDS (unchanged) */
+.split-wrap{
+  margin-top:22px;
+  padding:18px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  text-align:left;
+}
+.split-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:16px;
+}
+.split-card{
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  padding:16px;
+}
+.split-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  display:block;
+  margin-bottom:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+
+/* Location */
 .section{
   padding:40px 0;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -205,10 +265,10 @@
   display:block;
 }
 @media (max-width: 600px){
-  .container{ width:88%; }
   .map-wrap iframe{ height:320px; }
 }
 
+/* Footer */
 footer{
   padding:24px 0;
   text-align:center;
@@ -216,6 +276,14 @@ footer{
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
+/* ==========================================================
+   ✅ ONE-PASTE FIX: BANNER-ONLY OVERRIDE (ONLY CHANGES BANNER)
+   ========================================================== */
+
+.banner-image{
+  /* Use your uploaded banner image */
+  background-image: url("his_tattoo_name_is_johnnyfit.png") !important;
+  background-repeat: no-repeat
   --text:#ffffff;
   --muted:#aaaaaa;
   --accent:#c084fc;
@@ -243,3 +311,13 @@ a:hover{ text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 9999;
+  background: rgba(11,11,11,.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 0;
+}
