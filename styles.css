@@ -97,7 +97,7 @@ a:hover{ text-decoration: underline; }
   color:#111;
 }
 
-/* ✅ TRUE BANNER HEADER (CROPPED WIDE) */
+/* ✅ TRUE BANNER HEADER (same height, image zoomed OUT to show full artwork) */
 .banner{
   width: 100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -109,16 +109,21 @@ a:hover{ text-decoration: underline; }
   padding: 14px 0;
 }
 .banner-image{
-  /* This makes the square image behave like a wide banner */
+  /* Keep the same banner height */
   height: 220px;
+
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
 
+  /* ✅ Show FULL image inside the banner area (no cropping) */
   background-image: url("his_tattoo_name_is_johnnyfit.png");
-  background-size: cover;          /* crops like a real banner */
-  background-position: center;     /* keeps JohnnyFitswell centered */
+  background-size: contain;         /* <-- THIS is the “zoom out” */
+  background-position: center;
   background-repeat: no-repeat;
+
+  /* Fill behind the image (so empty space looks intentional) */
+  background-color: rgba(0,0,0,.22);
 }
 @media (max-width: 600px){
   .banner-inner{ padding: 10px 0; }
@@ -166,7 +171,7 @@ a:hover{ text-decoration: underline; }
 }
 .hero-social a{ color: var(--accent); }
 
-/* Social Preview (unchanged mechanics) */
+/* Social Preview (keep your existing behavior) */
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -339,3 +344,4 @@ footer{
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,.08);
 }
+``
