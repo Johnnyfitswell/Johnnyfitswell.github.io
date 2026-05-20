@@ -27,7 +27,6 @@ document.addEventListener("keydown", (e)=>{
   if(e.key === "Escape") closeMenu();
 });
 
-/* Reprocess embeds after page load (helps ensure previews render) */
 window.addEventListener("load", () => {
   if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === "function") {
     window.instgrm.Embeds.process();
@@ -36,3 +35,4 @@ window.addEventListener("load", () => {
     window.FB.XFBML.parse();
   }
 });
+``
