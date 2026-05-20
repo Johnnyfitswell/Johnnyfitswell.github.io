@@ -1,5 +1,52 @@
 :root{
- text-transform:uppercase; }  --bg:#0b0b0b;
+  --bg:#0b0b0b;
+  --text:#ffffff;
+  --muted:#aaaaaa;
+  --accent:#c084fc;
+  --border:rgba(255,255,255,.12);
+}
+
+/* ✅ BACKGROUND FIX (LOCKED) */
+html, body{
+  background: radial-gradient(circle at top, #1a1025, var(--bg)) !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* keep normal box sizing */
+*{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Links */
+a{ color: inherit; text-decoration:none; }
+a:hover{ text-decoration: underline; }
+
+.container{ width:min(1000px,92vw); margin:0 auto; }
+.dot{ color: rgba(255,255,255,.35); }
+
+/* TOP BAR */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgba(11,11,11,.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 0;
+}
+.brand{ font-weight:900; letter-spacing:.5px; text-transform:uppercase; }
 
 /* Hamburger */
 .menu-btn{
@@ -59,7 +106,7 @@
   color:#111;
 }
 
-/* Banner container */
+/* Banner container (leave as-is—no size change here) */
 .banner{
   width:100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -118,7 +165,7 @@
 }
 .hero-social a{ color: var(--accent); }
 
-/* SOCIAL PREVIEW (unchanged layout) */
+/* SOCIAL PREVIEW (unchanged) */
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -275,49 +322,4 @@ footer{
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,.08);
 }
-
-/* ==========================================================
-   ✅ ONE-PASTE FIX: BANNER-ONLY OVERRIDE (ONLY CHANGES BANNER)
-   ========================================================== */
-
-.banner-image{
-  /* Use your uploaded banner image */
-  background-image: url("his_tattoo_name_is_johnnyfit.png") !important;
-  background-repeat: no-repeat
-  --text:#ffffff;
-  --muted:#aaaaaa;
-  --accent:#c084fc;
-  --border:rgba(255,255,255,.12);
-}
-
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #1a1025, var(--bg));
-  color: var(--text);
-}
-
-a{ color: inherit; text-decoration:none; }
-a:hover{ text-decoration: underline; }
-
-.container{ width:min(1000px,92vw); margin:0 auto; }
-.dot{ color: rgba(255,255,255,.35); }
-
-/* TOP BAR */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  background: rgba(11,11,11,.75);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.topbar-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 14px 0;
-}
+``
