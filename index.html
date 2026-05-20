@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en">
+<!doctype html><!doctype htmlen">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -64,96 +63,90 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* ===== Social Preview (real previews + mobile swipe) ===== */
+    /* ===== Social Preview (REAL previews, smaller on desktop + mobile) ===== */
     .social-preview{
       margin-top: 18px;
+
+      /* ✅ smaller on desktop */
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
-      padding: 16px;
+      padding: 14px;
       text-align: left;
       position: relative;
     }
+
     .social-head{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .social-head h3{
       margin:0;
       letter-spacing: 1px;
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: 13px;
     }
-    .social-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .social-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:#fff;
-      font-weight: 800;
-      letter-spacing: .3px;
-      text-decoration:none;
-    }
-    .social-btn:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
 
-    /* Desktop/tablet layout */
+    /* ✅ Removed duplicate buttons in preview (you only want links in header) */
+    .social-actions{ display:none; }
+
+    /* Grid layout (desktop) — smaller cards */
     .embed-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
+      justify-content: center;
+      grid-template-columns: repeat(2, minmax(300px, 370px));
     }
+
     .embed-card{
-      border-radius: 16px;
+      border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.25);
-      padding: 10px;
+      padding: 8px;
       overflow: hidden;
     }
+
     .embed-label{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap: 10px;
-      padding: 6px 6px 10px;
+      padding: 6px 6px 8px;
     }
     .embed-label .label{
       font-weight: 900;
-      letter-spacing: .4px;
+      letter-spacing: .35px;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 11px;
       color: rgba(255,255,255,.85);
     }
     .embed-label .pill{
-      padding: 6px 10px;
+      padding: 5px 9px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
       letter-spacing: .4px;
       text-transform: uppercase;
       color:#fff;
       flex: 0 0 auto;
     }
-    .pill.ig{ box-shadow: 0 0 16px rgba(192,132,252,.18); }
-    .pill.fb{ box-shadow: 0 0 16px rgba(120,180,255,.18); }
+    .pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
+    .pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
 
-    /* FB iframe wrappers for clean sizing */
+    /* FB iframe wrappers */
     .fb-embed{
       width: 100%;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.15);
@@ -164,53 +157,46 @@
       border: 0;
       display:block;
     }
-    /* Post aspect ratios */
+
+    /* ✅ smaller heights so previews don’t fill the whole screen */
     .ratio-post{
       aspect-ratio: 500 / 728;
-      min-height: 540px;
+      height: clamp(360px, 40vh, 520px);
     }
     .ratio-photo{
       aspect-ratio: 500 / 640;
-      min-height: 500px;
+      height: clamp(340px, 38vh, 480px);
     }
     .ratio-photoTall{
       aspect-ratio: 500 / 723;
-      min-height: 520px;
+      height: clamp(360px, 40vh, 520px);
     }
 
-    /* MOBILE: swipe strip (so they don’t stack) */
+    /* ✅ Mobile: still swipe, but smaller so it doesn’t take over */
     @media (max-width: 600px){
+      .social-preview{
+        max-width: 520px;   /* keeps it from being full-width on big phones */
+        padding: 12px;
+      }
+
       .embed-grid{
         grid-template-columns: unset;
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 88%;
+        grid-auto-columns: 78%; /* ✅ smaller cards than before */
         overflow-x: auto;
-        gap: 12px;
+        gap: 10px;
         padding-bottom: 8px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        justify-content: start;
       }
       .embed-card{ scroll-snap-align: start; }
 
-      .social-preview::after{
-        content:"Swipe →";
-        position:absolute;
-        right: 14px;
-        top: 14px;
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: .3px;
-        color: rgba(255,255,255,.65);
-        background: rgba(0,0,0,.25);
-        border: 1px solid rgba(255,255,255,.10);
-        padding: 6px 10px;
-        border-radius: 999px;
-      }
-
-      .ratio-post{ min-height: 600px; }
-      .ratio-photo{ min-height: 560px; }
-      .ratio-photoTall{ min-height: 600px; }
+      /* Smaller heights on mobile */
+      .ratio-post{ height: 420px; }
+      .ratio-photo{ height: 390px; }
+      .ratio-photoTall{ height: 420px; }
     }
 
     /* Two worlds section */
@@ -315,20 +301,17 @@
       <h1 class="hero-title">Johnny Fitswell</h1>
       <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
+      <!-- ✅ Links stay ONLY here (header) -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
         <span style="color:rgba(255,255,255,.35)">•</span>
-        <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- ✅ Social preview with REAL previews -->
+      <!-- Social preview (no buttons inside) -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
-          <div class="social-actions">
-            <a class="social-btn" href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">View Instagram</a>
-            <a class="social-btn" href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">View Facebook</a>
-          </div>
         </div>
 
         <div class="embed-grid">
@@ -348,45 +331,27 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- ✅ Facebook Post (pfbid...) -->
+          <!-- Facebook Post (pfbid...) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
             <div class="fb-embed ratio-post">
-              <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500"
-                style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- ✅ Facebook Photo (247995...) -->
+          <!-- Facebook Photo (247995...) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
             <div class="fb-embed ratio-photo">
-              <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500"
-                style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- ✅ Facebook Photo (269072...) -->
+          <!-- Facebook Photo (269072...) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
             <div class="fb-embed ratio-photoTall">
-              <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
-                style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
         </div>
@@ -434,8 +399,7 @@
   <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
 
   <script src="script.js"></script>
-
-  <!-- Instagram embed script -->
   <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
+``
