@@ -5,283 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Home</title>
 
-  styles.css
-
-  <style>
-    /* ===== Home hero texture ===== */
-    .home-hero{
-      position: relative;
-      padding: 70px 0 40px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .home-hero::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(900px 500px at 20% 0%, rgba(192,132,252,.18), transparent 60%),
-        radial-gradient(900px 600px at 80% 20%, rgba(255,255,255,.05), transparent 55%),
-        repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px);
-      pointer-events:none;
-      z-index:0;
-    }
-    .home-hero > *{ position:relative; z-index:1; }
-
-    .tagline{
-      margin: 10px auto 6px;
-      display:inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      letter-spacing: 1px;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-    .hero-title{
-      margin: 0 0 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .hero-sub{
-      max-width: 60ch;
-      margin: 0 auto;
-      color: rgba(255,255,255,.78);
-      line-height: 1.7;
-    }
-
-    /* Social links in header only */
-    .hero-social{
-      margin-top: 14px;
-      display:flex;
-      justify-content:center;
-      gap: 12px;
-      flex-wrap:wrap;
-      font-weight: 800;
-      letter-spacing: .4px;
-    }
-    .hero-social a{ color: #c084fc; text-decoration:none; }
-    .hero-social a:hover{ color:#fff; text-decoration:underline; }
-
-    /* ===== Social Preview (scroll strip + uniform size) ===== */
-    .social-preview{
-      margin-top: 18px;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      padding: 14px;
-      text-align: left;
-      position: relative;
-    }
-    .social-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .social-head h3{
-      margin:0;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 13px;
-    }
-
-    .embed-strip{
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 380px;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .embed-strip::-webkit-scrollbar{ height: 10px; }
-    .embed-strip::-webkit-scrollbar-thumb{
-      background: rgba(255,255,255,.18);
-      border-radius: 999px;
-    }
-
-    .embed-card{
-      scroll-snap-align: start;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      padding: 8px;
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .embed-label{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 10px;
-      padding: 6px 6px 8px;
-    }
-    .embed-label .label{
-      font-weight: 900;
-      letter-spacing: .35px;
-      text-transform: uppercase;
-      font-size: 11px;
-      color: rgba(255,255,255,.85);
-    }
-    .embed-label .pill{
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-      color:#fff;
-      flex: 0 0 auto;
-    }
-    .pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
-    .pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
-
-    .preview-frame{
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.12);
-      height: 320px;
-      position: relative;
-    }
-    .preview-frame iframe{
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display:block;
-    }
-    .preview-frame .instagram-media{
-      margin: 0 !important;
-      min-width: 0 !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      background: transparent !important;
-    }
-
-    /* Facebook: reduce “extra info” by cropping + show_text=false */
-    .fb-crop iframe{
-      transform: translateY(-70px);
-      height: calc(100% + 70px);
-    }
-
-    .social-preview::after{
-      content:"Scroll →";
-      position:absolute;
-      right: 14px;
-      top: 14px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .3px;
-      color: rgba(255,255,255,.55);
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 6px 10px;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    @media (max-width: 600px){
-      .social-preview{ max-width: 520px; padding: 12px; }
-      .embed-strip{ grid-auto-columns: 78%; }
-      .preview-frame{ height: 280px; }
-      .fb-crop iframe{
-        transform: translateY(-60px);
-        height: calc(100% + 60px);
-      }
-    }
-
-    /* Two worlds section */
-    .split-wrap{
-      margin-top: 18px;
-      padding: 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      text-align: left;
-    }
-    .split-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .split-card{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      padding: 16px;
-      overflow:hidden;
-    }
-    .split-card img{
-      width:100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.10);
-      display:block;
-      margin-bottom: 12px;
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
-    }
-    .split-card h3{
-      margin: 0 0 8px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-    .split-card p{
-      margin: 0;
-      color: rgba(255,255,255,.75);
-      line-height: 1.6;
-    }
-    .split-divider{
-      margin-top: 18px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #c084fc, rgba(255,255,255,.18), rgba(255,255,255,.06));
-    }
-
-    .map-wrap{
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .map-wrap iframe{
-      width: 100%;
-      height: 380px;
-      border: 0;
-      display: block;
-    }
-    @media (max-width: 800px){
-      .split-grid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px){
-      .map-wrap iframe{ height: 320px; }
-    }
-  </style>
+  <!-- ✅ Correct CSS link (do NOT delete this) -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!-- TOP BAR -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
+
       <button id="menuBtn" class="menu-btn" aria-label="Open menu">
-        <div class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
       </button>
     </div>
   </div>
 
+  <!-- FULLSCREEN MENU (NO ABOUT) -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-top">
       <div class="menu-title">JOHNNY FITSWELL</div>
@@ -297,25 +39,28 @@
     </div>
   </div>
 
+  <!-- PAGE CONTENT -->
   <div class="container">
     <section class="home-hero">
       <div class="tagline">Art Above • Steel Below</div>
       <h1 class="hero-title">Johnny Fitswell</h1>
       <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
+      <!-- Social links ONLY in header -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
-        <span style="color:rgba(255,255,255,.35)">•</span>
+        <span class="dot">•</span>
         <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
       </div>
 
+      <!-- SOCIAL PREVIEW (DESKTOP + MOBILE SCROLL STRIP) -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
         </div>
 
         <div class="embed-strip">
-          <!-- Instagram (unchanged) -->
+          <!-- Instagram (do not change) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
             <div class="preview-frame">
@@ -337,7 +82,7 @@
             </div>
           </div>
 
-          <!-- Facebook (cleaned) -->
+          <!-- Facebook (captions minimized) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
             <div class="preview-frame fb-crop">
@@ -373,23 +118,23 @@
         </div>
       </div>
 
+      <!-- TWO WORLDS -->
       <div class="split-wrap">
-        <h2 class="h2-tight" style="margin-top:18px;">Two Worlds. One Spot.</h2>
+        <h2 class="h2-tight">Two Worlds. One Spot.</h2>
         <p class="note">
-          Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
-          <br class="mobile-only"><br class="mobile-only">
+          Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.<br><br>
           Downstairs is precision and gear. Different energy — same location.
         </p>
 
         <div class="split-grid">
           <div class="split-card">
-            <img src="tattoogun.jpg" alt="Upstairs tattoo studio preview">
+            <img src="tattoogun.jpg" alt="Upstairs preview">
             <h3>Upstairs • Tattoo Studio</h3>
             <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
 
           <div class="split-card">
-            <img src="bullets.jpg" alt="Downstairs gun store preview">
+            <img src="bullets.jpg" alt="Downstairs preview">
             <h3>Downstairs • Gun Store</h3>
             <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
@@ -399,22 +144,25 @@
       </div>
     </section>
 
+    <!-- LOCATION -->
     <section class="section">
       <h2>Location</h2>
       <p class="note">Find us here:</p>
+
       <div class="map-wrap">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1032.6881658014206!2d-98.41190393036196!3d29.547914298448614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c8b69a36c137b%3A0x49975085ec7ab7ad!2s11950%20Nacogdoches%20Rd%2C%20San%20Antonio%2C%20TX%2078217!5e1!3m2!1sen!2sus!4v1778725474796!5m2!1sen!2sus"
-          width="600" height="450" style="border:0;"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </div>
 
   <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
 
+  <!-- ✅ Correct JS link -->
   <script src="script.js" defer></script>
+
+  <!-- Instagram embed script -->
   <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
