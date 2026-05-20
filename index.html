@@ -1,7 +1,5 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
+<html lang charset="utf-8" /><html lang="en">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Home</title>
 
@@ -71,7 +69,6 @@
       max-width: 780px;
       margin-left: auto;
       margin-right: auto;
-
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
@@ -102,16 +99,17 @@
     .embed-strip{
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: 340px;  /* ✅ desktop card width */
+
+      /* ✅ BONUS: match FB width to IG feel */
+      grid-auto-columns: 380px;
+
       gap: 10px;
       overflow-x: auto;
       padding-bottom: 8px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
-    .embed-strip::-webkit-scrollbar{
-      height: 10px;
-    }
+    .embed-strip::-webkit-scrollbar{ height: 10px; }
     .embed-strip::-webkit-scrollbar-thumb{
       background: rgba(255,255,255,.18);
       border-radius: 999px;
@@ -156,13 +154,13 @@
     .pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
     .pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
 
-    /* ✅ KEY FIX: Force every preview to the same height and crop overflow */
+    /* ✅ Uniform height for EVERY preview */
     .preview-frame{
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.12);
-      height: 320px; /* ✅ uniform height on desktop */
+      height: 320px; /* desktop uniform height */
     }
 
     /* Facebook iframes fill the frame */
@@ -173,7 +171,7 @@
       display:block;
     }
 
-    /* Instagram embeds render their own structure — keep them constrained */
+    /* Instagram embed blockquote constrained */
     .preview-frame .instagram-media{
       margin: 0 !important;
       min-width: 0 !important;
@@ -182,7 +180,7 @@
       background: transparent !important;
     }
 
-    /* Optional: a subtle hint on desktop too */
+    /* Subtle hint */
     .social-preview::after{
       content:"Scroll →";
       position:absolute;
@@ -198,7 +196,7 @@
       border-radius: 999px;
     }
 
-    /* ✅ Mobile: slightly smaller cards + slightly shorter height */
+    /* ✅ Mobile: smaller cards + smaller height so it doesn’t take over */
     @media (max-width: 600px){
       .social-preview{
         max-width: 520px;
@@ -321,7 +319,7 @@
         <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- Social preview (desktop + mobile scroll strip, uniform height) -->
+      <!-- Social preview (scroll strip, uniform size, no duplicate links) -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
@@ -352,43 +350,43 @@
             </div>
           </div>
 
-          <!-- FB Post -->
+          <!-- FB Post (width=380 to match IG vibe) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
             <div class="preview-frame">
               <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=380"
+                width="380" height="320"
                 style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
+                scrolling="no" frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- FB Photo -->
+          <!-- FB Photo (width=380) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
             <div class="preview-frame">
               <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=380"
+                width="380" height="320"
                 style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
+                scrolling="no" frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- FB Photo -->
+          <!-- FB Photo (width=380) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
             <div class="preview-frame">
               <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=380"
+                width="380" height="320"
                 style="border:none;overflow:hidden"
-                scrolling="no"
-                frameborder="0"
+                scrolling="no" frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
@@ -438,6 +436,8 @@
   <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
 
   <script src="script.js"></script>
-  <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
+  <script async src="https://platform.instagram.com/en_US/embeds.js/"></script>
 </body>
 </html>
+
+<head>
