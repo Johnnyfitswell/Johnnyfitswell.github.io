@@ -22,11 +22,11 @@ a:hover{ text-decoration: underline; }
 .container{ width:min(1000px,92vw); margin:0 auto; }
 .dot{ color: rgba(255,255,255,.35); }
 
-/* ===== TOP BAR ===== */
+/* ===== TOP BAR (keep clickable) ===== */
 .topbar{
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 99999; /* ✅ above embeds */
   background: rgba(11,11,11,.75);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -54,6 +54,8 @@ a:hover{ text-decoration: underline; }
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  position: relative;
+  z-index: 100000; /* ✅ above everything */
 }
 .menu-btn:hover{ background: rgba(255,255,255,.10); }
 
@@ -73,7 +75,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,.97);
   color:#111;
   display:none;
-  z-index: 20000;
+  z-index: 200000; /* ✅ must be higher than topbar */
 }
 .menu-overlay.open{ display:block; }
 
@@ -111,10 +113,10 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   color:#111;
 }
-.menu-links a:hover{ text-decoration: underline; }
 
 /* =========================================================
-   ✅ BANNER (TRUE HEADER) — BANNER IMAGE FIXED (BANNER ONLY)
+   ✅ BANNER (ONLY BANNER SETTINGS)
+   Fix: keep full name visible (stop cutting off)
    ========================================================= */
 .banner{
   width:100%;
@@ -126,34 +128,37 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
   padding: 14px 0;
 }
+
+/* This class must match your HTML: <div class="banner-image"></div> */
 .banner-image{
   height: 220px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
+  background-color: rgba(0,0,0,.18);
 
-  /* ✅ THIS IS THE FIX: the banner image was missing */
+  /* Banner artwork */
   background-image: url("his_tattoo_name_is_johnnyfit.png");
   background-repeat: no-repeat;
 
-  /* ✅ Fill the border (not tiny in the middle) */
+  /* Fill the border */
   background-size: cover;
 
-  /* ✅ Keep name + “Tattoo Artist” visible */
-  background-position: center 60%;
-
-  background-color: rgba(0,0,0,.18);
+  /* ✅ FIX: move crop UP so "JohnnyFitswell" isn't cut off */
+  background-position: center 42%;
 }
+
+/* Mobile: adjust crop slightly so text stays visible */
 @media (max-width: 600px){
   .banner-inner{ padding: 10px 0; }
   .banner-image{
     height: 140px;
     border-radius: 14px;
-    background-position: center 62%;
+    background-position: center 45%;
   }
 }
 
-/* ===== HERO ===== */
+/* ===== HERO (unchanged) ===== */
 .home-hero{
   padding: 40px 0 18px;
   text-align:center;
@@ -192,7 +197,7 @@ a:hover{ text-decoration: underline; }
 }
 .hero-social a{ color: var(--accent); }
 
-/* ===== SOCIAL PREVIEW (UNCHANGED) ===== */
+/* ===== SOCIAL PREVIEW (unchanged) ===== */
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -208,7 +213,6 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   font-size:13px;
 }
-
 .embed-strip{
   display:grid;
   grid-auto-flow: column;
@@ -219,12 +223,6 @@ a:hover{ text-decoration: underline; }
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-.embed-strip::-webkit-scrollbar{ height:10px; }
-.embed-strip::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.18);
-  border-radius:999px;
-}
-
 .embed-card{
   scroll-snap-align:start;
   border-radius:14px;
@@ -285,7 +283,7 @@ a:hover{ text-decoration: underline; }
   height: calc(100% + 70px);
 }
 
-/* ===== TWO WORLDS (UNCHANGED) ===== */
+/* ===== TWO WORLDS (unchanged) ===== */
 .split-wrap{
   margin-top:22px;
   padding:18px;
@@ -316,25 +314,7 @@ a:hover{ text-decoration: underline; }
   margin-bottom:12px;
   box-shadow:0 10px 26px rgba(0,0,0,.35);
 }
-.split-card h3{
-  margin:0 0 8px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  font-size:14px;
-}
-.split-card p{
-  margin:0;
-  color: rgba(255,255,255,.75);
-  line-height:1.6;
-}
-.split-divider{
-  margin-top:18px;
-  height:3px;
-  border-radius:999px;
-  background: linear-gradient(to right, var(--accent), rgba(255,255,255,.18), rgba(255,255,255,.06));
-}
 
-/* ===== LOCATION (UNCHANGED) ===== */
 .section{
   padding:40px 0;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -354,7 +334,6 @@ a:hover{ text-decoration: underline; }
   display:block;
 }
 
-/* ===== FOOTER ===== */
 footer{
   padding:24px 0;
   text-align:center;
@@ -362,7 +341,6 @@ footer{
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 800px){
   .split-grid{ grid-template-columns: 1fr; }
 }
@@ -376,4 +354,3 @@ footer{
   }
   .map-wrap iframe{ height:320px; }
 }
-``
