@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.getElementById("menuBtn");
-  const menuOverlay = document.getElementById("menuOverlay");
-  const menuClose = document.getElementById("menuClose");
+  const menuBtn = documentId("menuClose");  const menuBtn = document.getElementById("menuBtn");
 
   function openMenu(){
     if(!menuOverlay) return;
@@ -28,3 +26,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if(e.key === "Escape") closeMenu();
   });
 });
+  const menuOverlay = document.getElementById("menuOverlay");
