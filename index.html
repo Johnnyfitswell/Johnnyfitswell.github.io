@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Home</title>
 
-  <!-- MUST be a real link tag -->
-  <link rel="stylesheet" href="styles.css"exture */
+  styles.css
+
+  <style>
+    /* ===== Home hero texture ===== */
     .home-hero{
       position: relative;
       padding: 70px 0 40px;
@@ -76,7 +78,6 @@
       text-align: left;
       position: relative;
     }
-
     .social-head{
       display:flex;
       align-items:center;
@@ -92,11 +93,10 @@
       font-size: 13px;
     }
 
-    /* Desktop + mobile: horizontal strip */
     .embed-strip{
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: 380px; /* match IG feel */
+      grid-auto-columns: 380px;
       gap: 10px;
       overflow-x: auto;
       padding-bottom: 8px;
@@ -148,7 +148,6 @@
     .pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
     .pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
 
-    /* Uniform height for all previews */
     .preview-frame{
       border-radius: 12px;
       overflow: hidden;
@@ -157,16 +156,12 @@
       height: 320px;
       position: relative;
     }
-
-    /* FB iframes fill */
     .preview-frame iframe{
       width: 100%;
       height: 100%;
       border: 0;
       display:block;
     }
-
-    /* IG blockquote constrained (do not change IG behavior) */
     .preview-frame .instagram-media{
       margin: 0 !important;
       min-width: 0 !important;
@@ -175,13 +170,12 @@
       background: transparent !important;
     }
 
-    /* Facebook: hide caption area as much as possible by cropping */
+    /* Facebook: reduce “extra info” by cropping + show_text=false */
     .fb-crop iframe{
       transform: translateY(-70px);
       height: calc(100% + 70px);
     }
 
-    /* Hint */
     .social-preview::after{
       content:"Scroll →";
       position:absolute;
@@ -199,13 +193,9 @@
     }
 
     @media (max-width: 600px){
-      .social-preview{
-        max-width: 520px;
-        padding: 12px;
-      }
+      .social-preview{ max-width: 520px; padding: 12px; }
       .embed-strip{ grid-auto-columns: 78%; }
       .preview-frame{ height: 280px; }
-
       .fb-crop iframe{
         transform: translateY(-60px);
         height: calc(100% + 60px);
@@ -299,9 +289,10 @@
     </div>
     <div class="menu-links">
       <nav>
-        <a href="index.html        <a href="artists.htmla>
-        <a href="booking.htmla>
-        <a href="portfolio.html</a>
+        <a href="index.html">Home</a>
+        <a href="artists.html">Artists</a>
+        <a href="booking.html">Booking</a>
+        <a href="portfolio.html">Portfolio</a>
       </nav>
     </div>
   </div>
@@ -313,14 +304,18 @@
       <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
       <div class="hero-social">
-        <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener:rgba(255,255,255,.35)">•</span>
-        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopenerass="social-preview">
+        <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
+        <span style="color:rgba(255,255,255,.35)">•</span>
+        <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
+      </div>
+
+      <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
         </div>
 
         <div class="embed-strip">
-          <!-- IG (unchanged) -->
+          <!-- Instagram (unchanged) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
             <div class="preview-frame">
@@ -342,7 +337,7 @@
             </div>
           </div>
 
-          <!-- FB (cropped + show_text=false) -->
+          <!-- Facebook (cleaned) -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
             <div class="preview-frame fb-crop">
@@ -350,17 +345,37 @@
                 src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=false&width=380"
                 scrolling="no" frameborder="0"
                 allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share            <div class="preview-frame fb-crop">
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="preview-frame fb-crop">
               <iframe
                 src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=380"
                 scrolling="no" frameborder="0"
                 allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share            <div class="preview-frame fb-crop">
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
+            <div class="preview-frame fb-crop">
               <iframe
                 src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=false&width=380"
                 scrolling="no" frameborder="0"
                 allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-shareclass="note">
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-wrap">
+        <h2 class="h2-tight" style="margin-top:18px;">Two Worlds. One Spot.</h2>
+        <p class="note">
           Upstairs is where custom ink lives — clean lines, bold color, and watercolor work.
           <br class="mobile-only"><br class="mobile-only">
           Downstairs is precision and gear. Different energy — same location.
@@ -368,11 +383,15 @@
 
         <div class="split-grid">
           <div class="split-card">
-            <img src="tattoogun.jpg" alt="Upstairs tattoo studio preview            <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
+            <img src="tattoogun.jpg" alt="Upstairs tattoo studio preview">
+            <h3>Upstairs • Tattoo Studio</h3>
+            <p>Custom designs, color work, and watercolor-style pieces. Visit the Artists tab to meet Johnny.</p>
           </div>
 
           <div class="split-card">
-            <img src="bullets.jpg" alt="Downstairs gun store preview            <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
+            <img src="bullets.jpg" alt="Downstairs gun store preview">
+            <h3>Downstairs • Gun Store</h3>
+            <p>Rugged, mechanical vibe downstairs. The contrast is the brand: art up top, steel down below.</p>
           </div>
         </div>
 
@@ -388,6 +407,14 @@
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1032.6881658014206!2d-98.41190393036196!3d29.547914298448614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c8b69a36c137b%3A0x49975085ec7ab7ad!2s11950%20Nacogdoches%20Rd%2C%20San%20Antonio%2C%20TX%2078217!5e1!3m2!1sen!2sus!4v1778725474796!5m2!1sen!2sus"
           width="600" height="450" style="border:0;"
           allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" deferasync src="https://platform.instagram.com/en_US/embeds.js"></script>
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2026 Johnny Fitswell — By Appointment Only</footer>
+
+  <script src="script.js" defer></script>
+  <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
