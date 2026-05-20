@@ -64,7 +64,7 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* ===== Social Preview (grid links directly to posts) ===== */
+    /* ===== Social Preview (mobile-friendly strip) ===== */
     .social-preview{
       margin-top: 18px;
       border-radius: 16px;
@@ -107,11 +107,14 @@
     }
     .social-btn:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
 
+    /* Desktop/tablet grid */
     .social-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
+
+    /* Tile */
     .post-tile{
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
@@ -121,8 +124,23 @@
       flex-direction: column;
       gap: 10px;
       text-decoration:none;
-      min-height: 110px;
+      min-height: 112px;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Platform styling to add visual difference without thumbnails */
+    .post-tile.ig{
+      background:
+        radial-gradient(600px 180px at 10% 0%, rgba(192,132,252,.20), transparent 55%),
+        rgba(0,0,0,.25);
+    }
+    .post-tile.fb{
+      background:
+        radial-gradient(600px 180px at 10% 0%, rgba(120,180,255,.18), transparent 55%),
+        rgba(0,0,0,.25);
+    }
+
     .post-top{
       display:flex;
       align-items:center;
@@ -139,7 +157,9 @@
       font-weight: 900;
       letter-spacing: .5px;
       text-transform: uppercase;
+      flex: 0 0 auto;
     }
+
     .post-title{
       font-weight: 900;
       letter-spacing: .4px;
@@ -148,12 +168,24 @@
       font-size: 13px;
       text-transform: uppercase;
     }
+
     .post-desc{
       margin:0;
       color: rgba(255,255,255,.74);
       font-size: 13px;
       line-height: 1.55;
     }
+
+    .open-arrow{
+      position:absolute;
+      right: 12px;
+      bottom: 10px;
+      color: rgba(255,255,255,.65);
+      font-weight: 900;
+      letter-spacing: .3px;
+      font-size: 12px;
+    }
+
     .post-tile:hover{
       background: rgba(255,255,255,.06);
       text-decoration:none;
@@ -221,12 +253,50 @@
       display: block;
     }
 
+    /* ✅ MOBILE: turn the grid into a horizontal scroll strip */
     @media (max-width: 800px){
       .split-grid{ grid-template-columns: 1fr; }
-      .social-grid{ grid-template-columns: 1fr; }
     }
+
     @media (max-width: 600px){
       .map-wrap iframe{ height: 320px; }
+
+      /* Make the section feel like a carousel */
+      .social-grid{
+        grid-template-columns: unset;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 82%;
+        overflow-x: auto;
+        gap: 12px;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .post-tile{
+        scroll-snap-align: start;
+        min-height: 120px;
+      }
+
+      /* Add a subtle hint that it scrolls */
+      .social-preview{
+        position: relative;
+      }
+      .social-preview::after{
+        content: "Swipe →";
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .3px;
+        color: rgba(255,255,255,.65);
+        background: rgba(0,0,0,.25);
+        border: 1px solid rgba(255,255,255,.10);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
     }
   </style>
 </head>
@@ -269,7 +339,7 @@
         <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- ✅ Social grid linking directly to your 6 posts -->
+      <!-- ✅ Social preview: now a swipe strip on mobile -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
@@ -281,57 +351,63 @@
 
         <div class="social-grid">
           <!-- IG 1 -->
-          <a class="post-tile" href="https://www.instagram.com/reel/DV_nME9kRKq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
+          <a class="post-tile ig" href="https://www.instagram.com/reel/DV_nME9kRKq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Instagram Reel</p>
+              <p class="post-title">Instagram Reel #1</p>
               <span class="platform-pill">IG</span>
             </div>
-            <p class="post-desc">Tap to view this reel on Instagram.</p>
+            <p class="post-desc">Tap to watch this reel.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
 
-          <!-- IG 2 (fixed: removed space before utm_source) -->
-          <a class="post-tile" href="https://www.instagram.com/reel/DRVBKmckf-X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
+          <!-- IG 2 -->
+          <a class="post-tile ig" href="https://www.instagram.com/reel/DRVBKmckf-X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Instagram Reel</p>
+              <p class="post-title">Instagram Reel #2</p>
               <span class="platform-pill">IG</span>
             </div>
-            <p class="post-desc">Tap to view this reel on Instagram.</p>
+            <p class="post-desc">Tap to watch this reel.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
 
           <!-- IG 3 -->
-          <a class="post-tile" href="https://www.instagram.com/p/C3IzzE3STi5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
+          <a class="post-tile ig" href="https://www.instagram.com/p/C3IzzE3STi5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Instagram Post</p>
+              <p class="post-title">Instagram Post #3</p>
               <span class="platform-pill">IG</span>
             </div>
-            <p class="post-desc">Tap to view this post on Instagram.</p>
+            <p class="post-desc">Tap to view this post.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
 
           <!-- FB 1 -->
-          <a class="post-tile" href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <a class="post-tile fb" href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Facebook Post</p>
+              <p class="post-title">Facebook Post #1</p>
               <span class="platform-pill">FB</span>
             </div>
-            <p class="post-desc">Tap to view this post on Facebook.</p>
+            <p class="post-desc">Tap to view this post.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
 
           <!-- FB 2 -->
-          <a class="post-tile" href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <a class="post-tile fb" href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Facebook Reel</p>
+              <p class="post-title">Facebook Reel #2</p>
               <span class="platform-pill">FB</span>
             </div>
-            <p class="post-desc">Tap to view this reel on Facebook.</p>
+            <p class="post-desc">Tap to watch this reel.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
 
           <!-- FB 3 -->
-          <a class="post-tile" href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <a class="post-tile fb" href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" target="_blank" rel="noopener">
             <div class="post-top">
-              <p class="post-title">Facebook Reel</p>
+              <p class="post-title">Facebook Reel #3</p>
               <span class="platform-pill">FB</span>
             </div>
-            <p class="post-desc">Tap to view this reel on Facebook.</p>
+            <p class="post-desc">Tap to watch this reel.</p>
+            <span class="open-arrow">Open ↗</span>
           </a>
         </div>
       </div>
@@ -380,3 +456,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+``
