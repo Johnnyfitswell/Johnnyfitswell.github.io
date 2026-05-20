@@ -1,4 +1,5 @@
-<!doctype html><!doctype htmlen">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -51,6 +52,7 @@
       line-height: 1.7;
     }
 
+    /* Social links in header only */
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -63,11 +65,9 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* ===== Social Preview (REAL previews, smaller on desktop + mobile) ===== */
+    /* ===== Social Preview (scroll strip on desktop + mobile, uniform size) ===== */
     .social-preview{
       margin-top: 18px;
-
-      /* ✅ smaller on desktop */
       max-width: 780px;
       margin-left: auto;
       margin-right: auto;
@@ -95,23 +95,36 @@
       font-size: 13px;
     }
 
-    /* ✅ Removed duplicate buttons in preview (you only want links in header) */
+    /* No duplicate buttons inside preview */
     .social-actions{ display:none; }
 
-    /* Grid layout (desktop) — smaller cards */
-    .embed-grid{
-      display:grid;
+    /* ✅ Desktop + Mobile: horizontal scroll strip */
+    .embed-strip{
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 340px;  /* ✅ desktop card width */
       gap: 10px;
-      justify-content: center;
-      grid-template-columns: repeat(2, minmax(300px, 370px));
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .embed-strip::-webkit-scrollbar{
+      height: 10px;
+    }
+    .embed-strip::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.18);
+      border-radius: 999px;
     }
 
     .embed-card{
+      scroll-snap-align: start;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.25);
       padding: 8px;
       overflow: hidden;
+      min-width: 0;
     }
 
     .embed-label{
@@ -143,60 +156,60 @@
     .pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
     .pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
 
-    /* FB iframe wrappers */
-    .fb-embed{
-      width: 100%;
+    /* ✅ KEY FIX: Force every preview to the same height and crop overflow */
+    .preview-frame{
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.15);
+      background: rgba(0,0,0,.12);
+      height: 320px; /* ✅ uniform height on desktop */
     }
-    .fb-embed iframe{
+
+    /* Facebook iframes fill the frame */
+    .preview-frame iframe{
       width: 100%;
       height: 100%;
       border: 0;
       display:block;
     }
 
-    /* ✅ smaller heights so previews don’t fill the whole screen */
-    .ratio-post{
-      aspect-ratio: 500 / 728;
-      height: clamp(360px, 40vh, 520px);
-    }
-    .ratio-photo{
-      aspect-ratio: 500 / 640;
-      height: clamp(340px, 38vh, 480px);
-    }
-    .ratio-photoTall{
-      aspect-ratio: 500 / 723;
-      height: clamp(360px, 40vh, 520px);
+    /* Instagram embeds render their own structure — keep them constrained */
+    .preview-frame .instagram-media{
+      margin: 0 !important;
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      background: transparent !important;
     }
 
-    /* ✅ Mobile: still swipe, but smaller so it doesn’t take over */
+    /* Optional: a subtle hint on desktop too */
+    .social-preview::after{
+      content:"Scroll →";
+      position:absolute;
+      right: 14px;
+      top: 14px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .3px;
+      color: rgba(255,255,255,.55);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    /* ✅ Mobile: slightly smaller cards + slightly shorter height */
     @media (max-width: 600px){
       .social-preview{
-        max-width: 520px;   /* keeps it from being full-width on big phones */
+        max-width: 520px;
         padding: 12px;
       }
-
-      .embed-grid{
-        grid-template-columns: unset;
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 78%; /* ✅ smaller cards than before */
-        overflow-x: auto;
-        gap: 10px;
-        padding-bottom: 8px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        justify-content: start;
+      .embed-strip{
+        grid-auto-columns: 78%;
       }
-      .embed-card{ scroll-snap-align: start; }
-
-      /* Smaller heights on mobile */
-      .ratio-post{ height: 420px; }
-      .ratio-photo{ height: 390px; }
-      .ratio-photoTall{ height: 420px; }
+      .preview-frame{
+        height: 280px;
+      }
     }
 
     /* Two worlds section */
@@ -301,57 +314,83 @@
       <h1 class="hero-title">Johnny Fitswell</h1>
       <p class="hero-sub">Custom tattoos • Color • Watercolor style. Use the menu (top-right) to explore.</p>
 
-      <!-- ✅ Links stay ONLY here (header) -->
+      <!-- Links ONLY here -->
       <div class="hero-social">
         <a href="https://instagram.com/johnnyfitswell" target="_blank" rel="noopener">Instagram</a>
         <span style="color:rgba(255,255,255,.35)">•</span>
         <a href="https://facebook.com/JohnnyFitswell" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- Social preview (no buttons inside) -->
+      <!-- Social preview (desktop + mobile scroll strip, uniform height) -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
         </div>
 
-        <div class="embed-grid">
-          <!-- Instagram embeds -->
+        <div class="embed-strip">
+          <!-- IG 1 -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
+            </div>
           </div>
 
+          <!-- IG 2 -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Reel #2</span><span class="pill ig">IG</span></div>
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRVBKmckf-X/" data-instgrm-version="14"></blockquote>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRVBKmckf-X/" data-instgrm-version="14"></blockquote>
+            </div>
           </div>
 
+          <!-- IG 3 -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Instagram Post #3</span><span class="pill ig">IG</span></div>
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
+            <div class="preview-frame">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
+            </div>
           </div>
 
-          <!-- Facebook Post (pfbid...) -->
+          <!-- FB Post -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Post</span><span class="pill fb">FB</span></div>
-            <div class="fb-embed ratio-post">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div class="preview-frame">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjohnny.fitswell%2Fposts%2Fpfbid0hZB1fMBCixFzeGb6TsYMSFTWxztfFYRnH22q5YfcYXxJmdKJRdKhRtgcbF3GctP8l&show_text=true&width=500"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- Facebook Photo (247995...) -->
+          <!-- FB Photo -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
-            <div class="fb-embed ratio-photo">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div class="preview-frame">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D24799518493019457%26set%3Da.162183717179610%26type%3D3&show_text=false&width=500"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
 
-          <!-- Facebook Photo (269072...) -->
+          <!-- FB Photo -->
           <div class="embed-card">
             <div class="embed-label"><span class="label">Facebook Photo</span><span class="pill fb">FB</span></div>
-            <div class="fb-embed ratio-photoTall">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div class="preview-frame">
+              <iframe
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D26907288765575742%26set%3Da.162183717179610%26type%3D3&show_text=true&width=500"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
           </div>
         </div>
@@ -402,4 +441,3 @@
   <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
 </body>
 </html>
-``
