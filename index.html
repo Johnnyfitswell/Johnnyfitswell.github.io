@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* Home hero texture */
     .home-hero{
       position: relative;
       padding: 70px 0 40px;
@@ -51,7 +50,6 @@
       color: rgba(255,255,255,.78);
       line-height: 1.7;
     }
-
     .hero-social{
       margin-top: 14px;
       display:flex;
@@ -64,7 +62,7 @@
     .hero-social a{ color: #c084fc; text-decoration:none; }
     .hero-social a:hover{ color:#fff; text-decoration:underline; }
 
-    /* ===== REAL Social Preview Embeds ===== */
+    /* Social preview container */
     .social-preview{
       margin-top: 18px;
       border-radius: 16px;
@@ -72,6 +70,7 @@
       background: rgba(255,255,255,.04);
       padding: 16px;
       text-align: left;
+      position: relative;
     }
     .social-head{
       display:flex;
@@ -107,13 +106,12 @@
     }
     .social-btn:hover{ background: rgba(255,255,255,.10); text-decoration:none; }
 
-    /* Desktop/tablet layout: 2 columns for embeds */
+    /* Embed grid */
     .embed-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-
     .embed-card{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
@@ -121,9 +119,7 @@
       padding: 10px;
       overflow: hidden;
     }
-
-    /* Make embedded content fit */
-    .embed-card .embed-label{
+    .embed-label{
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -147,11 +143,37 @@
       letter-spacing: .4px;
       text-transform: uppercase;
       color:#fff;
+      flex: 0 0 auto;
     }
     .pill.ig{ box-shadow: 0 0 16px rgba(192,132,252,.18); }
     .pill.fb{ box-shadow: 0 0 16px rgba(120,180,255,.18); }
 
-    /* MOBILE: horizontal swipe strip (no stacking) */
+    /* FB fallback button (shows if embed can’t render) */
+    .fb-fallback{
+      margin: 8px 6px 6px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.20);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.80);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .fb-fallback a{
+      display:inline-block;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      font-weight: 900;
+      letter-spacing: .3px;
+      text-decoration:none;
+      color:#fff;
+    }
+    .fb-fallback a:hover{ background: rgba(255,255,255,.10); }
+
+    /* MOBILE: swipe strip */
     @media (max-width: 600px){
       .embed-grid{
         grid-template-columns: unset;
@@ -165,7 +187,6 @@
         -webkit-overflow-scrolling: touch;
       }
       .embed-card{ scroll-snap-align: start; }
-      .social-preview{ position: relative; }
       .social-preview::after{
         content:"Swipe →";
         position:absolute;
@@ -182,7 +203,7 @@
       }
     }
 
-    /* Two worlds section */
+    /* Two worlds */
     .split-wrap{
       margin-top: 18px;
       padding: 18px;
@@ -253,7 +274,7 @@
 </head>
 
 <body>
-  <!-- Facebook SDK root (needed for FB embeds) -->
+  <!-- Required for Facebook embeds -->
   <div id="fb-root"></div>
 
   <div class="topbar">
@@ -293,7 +314,6 @@
         <a href="https://facebook.com/JohnnyFitswellFacebook" target="_blank" rel="noopener">Facebook</a>
       </div>
 
-      <!-- ✅ REAL EMBEDS -->
       <div class="social-preview">
         <div class="social-head">
           <h3>Social Preview</h3>
@@ -305,49 +325,46 @@
 
         <div class="embed-grid">
 
-          <!-- Instagram Reel 1 -->
+          <!-- Instagram embeds (official method) -->
           <div class="embed-card">
-            <div class="embed-label">
-              <span class="label">Instagram Reel #1</span>
-              <span class="pill ig">IG</span>
-            </div>
+            <div class="embed-label"><span class="label">Instagram Reel #1</span><span class="pill ig">IG</span></div>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV_nME9kRKq/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- Instagram Reel 2 -->
           <div class="embed-card">
-            <div class="embed-label">
-              <span class="label">Instagram Reel #2</span>
-              <span class="pill ig">IG</span>
-            </div>
+            <div class="embed-label"><span class="label">Instagram Reel #2</span><span class="pill ig">IG</span></div>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRVBKmckf-X/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- Instagram Post 3 -->
           <div class="embed-card">
-            <div class="embed-label">
-              <span class="label">Instagram Post #3</span>
-              <span class="pill ig">IG</span>
-            </div>
+            <div class="embed-label"><span class="label">Instagram Post #3</span><span class="pill ig">IG</span></div>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C3IzzE3STi5/" data-instgrm-version="14"></blockquote>
           </div>
 
-          <!-- Facebook Post 1 -->
+          <!-- Facebook embeds (official method requires real post permalinks) -->
           <div class="embed-card">
-            <div class="embed-label">
-              <span class="label">Facebook Post #1</span>
-              <span class="pill fb">FB</span>
+            <div class="embed-label"><span class="label">Facebook Post #1</span><span class="pill fb">FB</span></div>
+            <div class="fb-post" data-href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" data-width="500 link).
+              <a href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
             </div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/p/1SssTRqfJx/?mibextid=wwXIfr" data-width="500 class="label">Facebook Reel #2</span>
-              <span class="pill fb">FB</span>
-            </div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" data-width="500Reel 3 -->
+          </div>
+
           <div class="embed-card">
-            <div class="embed-label">
-              <span class="label">Facebook Reel #3</span>
-              <span class="pill fb">FB</span>
+            <div class="embed-label"><span class="label">Facebook Reel #2</span><span class="pill fb">FB</span></div>
+            <div class="fb-post" data-href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" data-width="500          If the preview doesn't load, replace this with the reel’s original permalink URL.
+              <a href="https://www.facebook.com/share/r/1ENPRkFhj7/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
             </div>
-            <div class="fb-post" data-href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" data-width="500iv>
+          </div>
+
+          <div class="embed-card">
+            <div class="embed-label"><span class="label">Facebook Reel #3</span><span class="pill fb">FB</span></div>
+            <div class="fb-post" data-href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" data-width="500          If the preview doesn't load, replace this with the reel’s original permalink URL.
+              <a href="https://www.facebook.com/share/r/18aMcswvQT/?mibextid=wwXIfr" target="_blank" rel="noopener">Open on Facebook ↗</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       <div class="split-wrap">
         <h2 class="h2-tight">Two Worlds. One Spot.</h2>
@@ -392,9 +409,11 @@
 
   <script src="script.js"></script>
 
-  <!-- ✅ Instagram embed script (required for blockquote embeds to render) -->
-  <script async src="https://platform.instagram.com/en_US/embeds.js"></script>
+  <!-- Instagram embed script (renders blockquote embeds) -->
+  <script async src="https://platform.instagram.com/en_US/embeds.js"></script> [2](https://platform.instagram.com/en_US/embeds.js/)
 
-  <!-- ✅ Facebook SDK (required for fb-post embeds to render) -->
+  <!-- Facebook SDK (renders fb-post embeds) -->
   <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v25.0
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v25.08278/automatically-embed-newest-facebook-posts-on-my-website)[4](https://www.swiftorial.com/swiftlessons/third-party-integrations/embedding-third-party-content/embedding-facebook-posts/)
+</body>
+</html>
