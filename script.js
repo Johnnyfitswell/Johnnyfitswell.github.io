@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   menuBtn.addEventListener("click", openMenu, { passive: false });
   menuClose.addEventListener("click", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
 
-  // DO NOT preventDefault on nav links
+  // Let links navigate normally (do not preventDefault)
   document.querySelectorAll("#menuOverlay .menu-links a").forEach((a) => {
     a.addEventListener("click", () => closeMenu());
   });
