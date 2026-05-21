@@ -4,9 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Portfolio</title>
-
-  <!-- ✅ REAL link tag + cache-bust -->
-  <link rel="stylesheet" href="styles.css?v=20260521b" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -25,7 +23,7 @@
       <button id="menuClose" class="menu-close" aria-label="Close menu" type="button">✕</button>
     </div>
     <div class="menu-links">
-      <nav>
+      <nav aria-label="Site navigation">
         <a href="index.html">Home</a>
         <a href="artists.html">Artists</a>
         <a href="booking.html">Booking</a>
@@ -48,16 +46,22 @@
 
     <section class="section">
       <div class="portfolio-grid">
-        <img src="tattoo1.jpg" alt="Tattoo 1">
-        <img src="tattoo2.jpg" alt="Tattoo 2">
-        <img src="tattoo3.jpg" alt="Tattoo 3">
+        <!-- Clickable tiles (opens the image file) -->
+        <a class="portfolio-tile" href="tattoo1.jpg" target="_blank" rel="noopener">
+          <img src="tattoo1.jpg" alt="Tattoo 1">
+        </a>
+        <a class="portfolio-tile" href="tattoo2.jpg" target="_blank" rel="noopener">
+          <img src="tattoo2.jpg" alt="Tattoo 2">
+        </a>
+        <a class="portfolio-tile" href="tattoo3.jpg" target="_blank" rel="noopener">
+          <img src="tattoo3.jpg" alt="Tattoo 3">
+        </a>
       </div>
     </section>
   </div>
 
   <footer>© 2026 Johnny Fitswell</footer>
-
-  <!-- ✅ REAL script tag + cache-bust -->
-  <script src="script.js?v=20260521b" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+``
