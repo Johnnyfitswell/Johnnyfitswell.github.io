@@ -22,11 +22,11 @@ a:hover{ text-decoration: underline; }
 .container{ width:min(1000px,92vw); margin:0 auto; }
 .dot{ color: rgba(255,255,255,.35); }
 
-/* ===== TOP BAR ===== */
+/* TOP BAR */
 .topbar{
   position: sticky;
   top: 0;
-  z-index: 999999;              /* always above embeds */
+  z-index: 999999;
   background: rgba(11,11,11,.75);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -37,16 +37,10 @@ a:hover{ text-decoration: underline; }
   justify-content:space-between;
   padding: 14px 0;
 }
-.brand{
-  font-weight: 900;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
+.brand{ font-weight:900; letter-spacing:.5px; text-transform:uppercase; }
 
-/* Hamburger */
 .menu-btn{
-  width:44px;
-  height:44px;
+  width:44px; height:44px;
   border-radius:12px;
   border:1px solid var(--border);
   background: rgba(255,255,255,.06);
@@ -69,17 +63,13 @@ a:hover{ text-decoration: underline; }
 .menu-icon span:nth-child(2){ top:5px; }
 .menu-icon span:nth-child(3){ top:10px; }
 
-/* =========================================================
-   ✅ MENU OVERLAY FIX (THIS IS THE MAIN BUG)
-   Prevent invisible overlay from blocking all clicks/taps.
-   ========================================================= */
+/* MENU OVERLAY — IMPORTANT: DOES NOT BLOCK CLICKS WHEN CLOSED */
 .menu-overlay{
   position: fixed;
   inset: 0;
   background: rgba(255,255,255,.97);
   color:#111;
 
-  /* IMPORTANT: overlay exists but does NOT block clicks when closed */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -93,17 +83,10 @@ a:hover{ text-decoration: underline; }
   pointer-events: auto;
 }
 
-.menu-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: 18px 18px;
-}
+.menu-top{ display:flex; justify-content:space-between; align-items:center; padding:18px; }
 .menu-title{ font-weight:800; letter-spacing:.4px; }
-
 .menu-close{
-  width:44px;
-  height:44px;
+  width:44px; height:44px;
   border-radius:12px;
   border:1px solid rgba(0,0,0,.12);
   background: rgba(0,0,0,.04);
@@ -111,8 +94,6 @@ a:hover{ text-decoration: underline; }
   font-size:22px;
   touch-action: manipulation;
 }
-.menu-close:hover{ background: rgba(0,0,0,.08); }
-
 .menu-links{
   height: calc(100vh - 80px);
   display:grid;
@@ -128,9 +109,8 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   color:#111;
 }
-.menu-links a:hover{ text-decoration: underline; }
 
-/* ===== BANNER (RESTORE IMAGE; NOT CHANGING YOUR CROP STYLE, ONLY MAKING IT APPEAR) ===== */
+/* BANNER */
 .banner{
   width:100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -147,12 +127,10 @@ a:hover{ text-decoration: underline; }
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
 
-  /* ✅ This is what was missing (why it looked blank) */
   background-image: url("his_tattoo_name_is_johnnyfit.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 42%;
-
   background-color: rgba(0,0,0,.18);
 }
 @media (max-width: 600px){
@@ -164,7 +142,7 @@ a:hover{ text-decoration: underline; }
   }
 }
 
-/* ===== HERO (leave as you had it) ===== */
+/* HERO */
 .home-hero{ padding: 40px 0 18px; text-align:center; }
 .tagline{
   display:inline-block;
@@ -200,7 +178,126 @@ a:hover{ text-decoration: underline; }
 }
 .hero-social a{ color: var(--accent); }
 
-/* ===== Keep your existing section styles (safe defaults) ===== */
+/* Social preview sizing */
+.social-preview{
+  margin: 18px auto 0;
+  max-width: 780px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  padding:14px;
+  text-align:left;
+}
+.social-head h3{
+  margin:0 0 10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-size:13px;
+}
+.embed-strip{
+  display:grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 380px;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.embed-card{
+  scroll-snap-align:start;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25);
+  padding:8px;
+  overflow:hidden;
+}
+.embed-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:6px 6px 8px;
+}
+.label{
+  font-weight:900;
+  letter-spacing:.35px;
+  text-transform:uppercase;
+  font-size:11px;
+  color: rgba(255,255,255,.85);
+}
+.pill{
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
+.pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
+
+.preview-frame{
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.12);
+  height: 320px;
+}
+.preview-frame iframe{ width:100%; height:100%; border:0; display:block; }
+.preview-frame .instagram-media{
+  margin:0 !important;
+  min-width:0 !important;
+  width:100% !important;
+  max-width:100% !important;
+}
+.fb-crop iframe{
+  transform: translateY(-70px);
+  height: calc(100% + 70px);
+}
+
+/* Two worlds */
+.split-wrap{
+  margin-top:22px;
+  padding:18px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  text-align:left;
+}
+.split-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:16px;
+}
+.split-card{
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  padding:16px;
+}
+.split-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  display:block;
+  margin-bottom:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+.split-divider{
+  margin-top:18px;
+  height:3px;
+  border-radius:999px;
+  background: linear-gradient(to right, var(--accent), rgba(255,255,255,.18), rgba(255,255,255,.06));
+}
+
+/* Sections */
 .section{
   padding:40px 0;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -222,7 +319,16 @@ footer{
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
+@media (max-width: 800px){
+  .split-grid{ grid-template-columns: 1fr; }
+}
 @media (max-width: 600px){
   .container{ width:88%; }
+  .embed-strip{ grid-auto-columns: 78%; }
+  .preview-frame{ height: 280px; }
+  .fb-crop iframe{
+    transform: translateY(-60px);
+    height: calc(100% + 60px);
+  }
   .map-wrap iframe{ height:320px; }
 }
