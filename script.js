@@ -1,53 +1,42 @@
-// HAMBURGER MENU — FIXED:
-// - Menu opens/closes on desktop + mobile
-// - Menu links navigate normally (NO preventDefault on links)
-
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const menuOverlay = document.getElementById("menuOverlay");
   const menuClose = document.getElementById("menuClose");
 
-  // If any element is missing, do nothing (won't break page)
   if (!menuBtn || !menuOverlay || !menuClose) return;
 
-  function openMenu(e) {
-    // Prevent page from interpreting the tap as scroll/zoom on mobile
+  const openMenu = (e) => {
     if (e) e.preventDefault();
     menuOverlay.classList.add("open");
     menuOverlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-  }
+  };
 
-  function closeMenu() {
+  const closeMenu = () => {
     menuOverlay.classList.remove("open");
     menuOverlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-  }
+  };
 
-  // Open/close buttons: preventDefault is OK here
+  // open
   menuBtn.addEventListener("pointerdown", openMenu, { passive: false });
   menuBtn.addEventListener("touchstart", openMenu, { passive: false });
   menuBtn.addEventListener("click", openMenu, { passive: false });
 
+  // close
   menuClose.addEventListener("pointerdown", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
   menuClose.addEventListener("touchstart", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
   menuClose.addEventListener("click", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
 
-  // ✅ IMPORTANT: links must NOT call preventDefault or they won't navigate
-  // Close menu on click, but allow normal navigation
+  // IMPORTANT: do NOT preventDefault on links (so they navigate)
   document.querySelectorAll("#menuOverlay .menu-links a").forEach((a) => {
     a.addEventListener("click", () => {
       closeMenu();
-      // no preventDefault here
+      // navigation happens normally
     });
   });
 
-  // Close if clicking the backdrop (outside the menu content)
-  menuOverlay.addEventListener("click", (e) => {
-    if (e.target === menuOverlay) closeMenu();
-  });
-
-  // Escape closes menu
+  // close on ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
   });
