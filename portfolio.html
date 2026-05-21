@@ -4,22 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ✅ REAL link tag + cache-bust -->
+  <link rel="stylesheet" href="styles.css?v=20260521b" />
 </head>
 
 <body>
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
-
       <button id="menuBtn" class="menu-btn" aria-label="Open menu" type="button">
         <div class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></div>
       </button>
     </div>
   </div>
 
-  <!-- MENU OVERLAY -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-top">
       <div class="menu-title">JOHNNY FITSWELL</div>
@@ -35,14 +34,12 @@
     </div>
   </div>
 
-  <!-- BANNER -->
   <header class="banner" aria-label="Site Banner">
     <div class="banner-inner">
       <div class="banner-image" aria-label="Banner artwork"></div>
     </div>
   </header>
 
-  <!-- CONTENT -->
   <div class="container">
     <section class="hero">
       <h1>Portfolio</h1>
@@ -50,9 +47,7 @@
     </section>
 
     <section class="section">
-      <!-- ✅ This wrapper fixes the “giant single image” problem -->
       <div class="portfolio-grid">
-        <!-- Replace/add your real images here -->
         <img src="tattoo1.jpg" alt="Tattoo 1">
         <img src="tattoo2.jpg" alt="Tattoo 2">
         <img src="tattoo3.jpg" alt="Tattoo 3">
@@ -62,6 +57,7 @@
 
   <footer>© 2026 Johnny Fitswell</footer>
 
-  <script src="script.js" defer></script>
+  <!-- ✅ REAL script tag + cache-bust -->
+  <script src="script.js?v=20260521b" defer></script>
 </body>
 </html>
