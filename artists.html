@@ -5,72 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Johnny Fitswell | Artists</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Artists page spacing fix ONLY (does not affect other pages) */
-    .artist-page-wrap{
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 18px 0 10px;
-      text-align: center;
-    }
-
-    /* Make the page header tighter like before */
-    .artist-page-wrap .hero{
-      padding: 22px 0 12px; /* tighter */
-      text-align: center;
-    }
-    .artist-page-wrap .hero h1{
-      margin: 0 0 8px;
-    }
-    .artist-page-wrap .hero p{
-      margin: 0 auto;
-      max-width: 60ch;
-    }
-
-    /* Keep image from blowing up */
-    .artist-photo{
-      width: min(320px, 92vw);
-      height: 360px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: 0 16px 40px rgba(0,0,0,.55);
-      display:block;
-      margin: 10px auto 14px;
-    }
-
-    .artist-name{
-      margin: 6px 0 10px;
-      font-size: 28px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .pill-row{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 0 0 14px; /* tighter */
-    }
-
-    /* Quote stays as the only bottom content */
-    .artist-quote{
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    /* Reduce extra vertical spacing in the section */
-    .artist-page-wrap .section{
-      padding: 18px 0; /* tighter */
-      border-top: 0;   /* keeps it clean like your screenshot */
-    }
-  </style>
 </head>
 
 <body>
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">JOHNNY FITSWELL</div>
@@ -80,15 +17,13 @@
     </div>
   </div>
 
-  <!-- MENU OVERLAY (IDs must match script.js) -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-top">
       <div class="menu-title">JOHNNY FITSWELL</div>
       <button id="menuClose" class="menu-close" aria-label="Close menu" type="button">✕</button>
     </div>
-
     <div class="menu-links">
-      <nav>
+      <nav aria-label="Site navigation">
         <a href="index.html">Home</a>
         <a href="artists.html">Artists</a>
         <a href="booking.html">Booking</a>
@@ -97,47 +32,44 @@
     </div>
   </div>
 
-  <!-- BANNER -->
   <header class="banner" aria-label="Site Banner">
     <div class="banner-inner">
       <div class="banner-image" aria-label="Banner artwork"></div>
     </div>
   </header>
 
-  <!-- CONTENT -->
-  <div class="container artist-page-wrap">
+  <div class="container">
     <section class="hero">
       <h1>Our Artist</h1>
       <p>Meet the artist behind the work.</p>
     </section>
 
     <section class="section">
-      <img class="artist-photo" src="johnny.jpg" alt="Artist photo">
+      <div class="artist-card">
+        <img class="artist-photo" src="johnny.jpg" alt="Artist photo">
 
-      <h2 class="artist-name">Johnny Fitswell</h2>
+        <h2 class="artist-name">Johnny Fitswell</h2>
 
-      <!-- ✅ Pills: keep wording exactly as you changed it -->
-      <div class="pill-row">
-        <span class="pill">Any Style</span>
-        <span class="pill">Watercolor</span>
-        <span class="pill">Black and grey</span>
-        <span class="pill">Consult-First</span>
-      </div>
+        <!-- ✅ Keep your exact wording under the picture -->
+        <div class="pill-row">
+          <span class="pill">Any Style</span>
+          <span class="pill">Watercolor</span>
+          <span class="pill">Black and grey</span>
+          <span class="pill">Consult-First</span>
+        </div>
 
-      <!-- ✅ Quote only (bio removed) -->
-      <div class="artist-quote">
-        “I'm an artist of all sorts, down to the bone, through blood sweat and tears.
-        Always watching, always evolving, aware of change.
-        Trying not to have a style while having a style.
-        Art will create itself in its rawest nature.”
+        <!-- ✅ Quote only -->
+        <div class="artist-quote">
+          “I'm an artist of all sorts, down to the bone, through blood sweat and tears.
+          Always watching, always evolving, aware of change.
+          Trying not to have a style while having a style.
+          Art will create itself in its rawest nature.”
+        </div>
       </div>
     </section>
   </div>
 
   <footer>© 2026 Johnny Fitswell</footer>
-
-  <!-- ✅ This is the #1 reason Artists menu breaks when other pages work:
-       make sure the script is included on Artists page too -->
   <script src="script.js" defer></script>
 </body>
 </html>
