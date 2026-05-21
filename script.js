@@ -18,12 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   };
 
-  menuBtn.addEventListener("pointerdown", openMenu, { passive: false });
-  menuBtn.addEventListener("touchstart", openMenu, { passive: false });
   menuBtn.addEventListener("click", openMenu, { passive: false });
-
   menuClose.addEventListener("click", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
 
+  // DO NOT preventDefault on nav links
   document.querySelectorAll("#menuOverlay .menu-links a").forEach((a) => {
     a.addEventListener("click", () => closeMenu());
   });
