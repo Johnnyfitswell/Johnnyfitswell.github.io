@@ -29,6 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
     menuClose.addEventListener("touchstart", closeMenu, { passive: false });
   }
 
+  // close when tapping outside the menu content
+  if(menuOverlay){
+    menuOverlay.addEventListener("click", (e) => {
+      // only close when clicking backdrop, not inside menu links
+      if (e.target === menuOverlay) closeMenu(e);
+    });
+    menuOverlay.addEventListener("touchstart", (e) => {
+      if (e.target === menuOverlay) closeMenu(e);
+    }, { passive: false });
+  }
+
   document.querySelectorAll(".menu-links a").forEach(a=>{
     a.addEventListener("click", closeMenu, { passive: false });
     a.addEventListener("touchstart", closeMenu, { passive: false });
