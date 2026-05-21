@@ -3,41 +3,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuOverlay = document.getElementById("menuOverlay");
   const menuClose = document.getElementById("menuClose");
 
-  function openMenu(e){
-    if(e) e.preventDefault();
-    if(!menuOverlay) return;
+  if (!menuBtn || !menuOverlay || !menuClose) return;
+
+  const openMenu = (e) => {
+    if (e) e.preventDefault();
     menuOverlay.classList.add("open");
     menuOverlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-  }
+  };
 
-  function closeMenu(e){
-    if(e) e.preventDefault();
-    if(!menuOverlay) return;
+  const closeMenu = (e) => {
+    if (e) e.preventDefault();
     menuOverlay.classList.remove("open");
     menuOverlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-  }
+  };
 
-  if(menuBtn){
-    menuBtn.addEventListener("pointerdown", openMenu);
-    menuBtn.addEventListener("click", openMenu);
-    menuBtn.addEventListener("touchstart", openMenu, { passive: false });
-  }
+  // Most reliable across iPhone/Android/desktop
+  menuBtn.addEventListener("pointerdown", openMenu, { passive: false });
+  menuBtn.addEventListener("touchstart", openMenu, { passive: false });
+  menuBtn.addEventListener("click", openMenu, { passive: false });
 
-  if(menuClose){
-    menuClose.addEventListener("pointerdown", closeMenu);
-    menuClose.addEventListener("click", closeMenu);
-    menuClose.addEventListener("touchstart", closeMenu, { passive: false });
-  }
+  menuClose.addEventListener("pointerdown", closeMenu, { passive: false });
+  menuClose.addEventListener("touchstart", closeMenu, { passive: false });
+  menuClose.addEventListener("click", closeMenu, { passive: false });
 
-  document.querySelectorAll(".menu-links a").forEach(a=>{
-    a.addEventListener("pointerdown", closeMenu);
-    a.addEventListener("click", closeMenu);
+  document.querySelectorAll("#menuOverlay .menu-links a").forEach((a) => {
+    a.addEventListener("pointerdown", closeMenu, { passive: false });
     a.addEventListener("touchstart", closeMenu, { passive: false });
+    a.addEventListener("click", closeMenu, { passive: false });
   });
 
-  document.addEventListener("keydown", (e)=>{
-    if(e.key === "Escape") closeMenu();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu(e);
   });
 });
