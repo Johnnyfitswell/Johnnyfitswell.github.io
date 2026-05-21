@@ -18,27 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   };
 
-  // open
   menuBtn.addEventListener("pointerdown", openMenu, { passive: false });
   menuBtn.addEventListener("touchstart", openMenu, { passive: false });
   menuBtn.addEventListener("click", openMenu, { passive: false });
 
-  // close
-  menuClose.addEventListener("pointerdown", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
-  menuClose.addEventListener("touchstart", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
   menuClose.addEventListener("click", (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
 
-  // IMPORTANT: do NOT preventDefault on links (so they navigate)
   document.querySelectorAll("#menuOverlay .menu-links a").forEach((a) => {
-    a.addEventListener("click", () => {
-      closeMenu();
-      // navigation happens normally
-    });
+    a.addEventListener("click", () => closeMenu());
   });
 
-  // close on ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
   });
 });
-``
