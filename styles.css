@@ -1,61 +1,5 @@
 :root{
-  --bg:#0b0b0b;
-  --text:#ffffff;
-  --muted:#aaaaaa;
-  --accent:#c084fc;
-  --border:rgba(255,255,255,.12);
-}
-
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #1a1025, var(--bg));
-  color: var(--text);
-}
-
-a{ color: inherit; text-decoration:none; }
-a:hover{ text-decoration: underline; }
-
-.container{ width:min(1000px,92vw); margin:0 auto; }
-.dot{ color: rgba(255,255,255,.35); }
-
-/* ===== TOP BAR (keep clickable) ===== */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 99999; /* ✅ above embeds */
-  background: rgba(11,11,11,.75);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.topbar-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 14px 0;
-}
-.brand{
-  font-weight: 900;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-/* Hamburger */
-.menu-btn{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background: rgba(255,255,255,.06);
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  position: relative;
-  z-index: 100000; /* ✅ above everything */
+  --bg:#0b touch-action: manipulation;       /* ✅ improves tap behavior */  --bg:#0b0b0b;
 }
 .menu-btn:hover{ background: rgba(255,255,255,.10); }
 
@@ -75,7 +19,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,.97);
   color:#111;
   display:none;
-  z-index: 200000; /* ✅ must be higher than topbar */
+  z-index: 2000000;                /* ✅ above topbar */
 }
 .menu-overlay.open{ display:block; }
 
@@ -95,6 +39,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(0,0,0,.04);
   cursor:pointer;
   font-size:22px;
+  touch-action: manipulation;
 }
 .menu-close:hover{ background: rgba(0,0,0,.08); }
 
@@ -113,11 +58,9 @@ a:hover{ text-decoration: underline; }
   text-transform:uppercase;
   color:#111;
 }
+.menu-links a:hover{ text-decoration: underline; }
 
-/* =========================================================
-   ✅ BANNER (ONLY BANNER SETTINGS)
-   Fix: keep full name visible (stop cutting off)
-   ========================================================= */
+/* ===== Banner (leave visuals alone, prevent it from blocking taps) ===== */
 .banner{
   width:100%;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -128,27 +71,22 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
   padding: 14px 0;
 }
-
-/* This class must match your HTML: <div class="banner-image"></div> */
 .banner-image{
   height: 220px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  background-color: rgba(0,0,0,.18);
 
-  /* Banner artwork */
   background-image: url("his_tattoo_name_is_johnnyfit.png");
   background-repeat: no-repeat;
-
-  /* Fill the border */
   background-size: cover;
-
-  /* ✅ FIX: move crop UP so "JohnnyFitswell" isn't cut off */
   background-position: center 42%;
-}
+  background-color: rgba(0,0,0,.18);
 
-/* Mobile: adjust crop slightly so text stays visible */
+  /* ✅ IMPORTANT: banner itself should not intercept taps meant for topbar */
+  position: relative;
+  z-index: 1;
+}
 @media (max-width: 600px){
   .banner-inner{ padding: 10px 0; }
   .banner-image{
@@ -159,10 +97,7 @@ a:hover{ text-decoration: underline; }
 }
 
 /* ===== HERO (unchanged) ===== */
-.home-hero{
-  padding: 40px 0 18px;
-  text-align:center;
-}
+.home-hero{ padding: 40px 0 18px; text-align:center; }
 .tagline{
   display:inline-block;
   padding:8px 14px;
@@ -197,7 +132,11 @@ a:hover{ text-decoration: underline; }
 }
 .hero-social a{ color: var(--accent); }
 
-/* ===== SOCIAL PREVIEW (unchanged) ===== */
+/* ===== SOCIAL PREVIEW + OTHER SECTIONS (UNCHANGED STYLES) ===== */
+/* Keep whatever you already had below—this file intentionally does NOT remove your layout.
+   If you already have social preview CSS here, keep it below this line.
+   (If your file already contains it, no need to re-add—this paste replaces file, so include it if needed.) */
+
 .social-preview{
   margin: 18px auto 0;
   max-width: 780px;
@@ -231,34 +170,6 @@ a:hover{ text-decoration: underline; }
   padding:8px;
   overflow:hidden;
 }
-.embed-label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:6px 6px 8px;
-}
-.label{
-  font-weight:900;
-  letter-spacing:.35px;
-  text-transform:uppercase;
-  font-size:11px;
-  color: rgba(255,255,255,.85);
-}
-.pill{
-  padding:5px 9px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.4px;
-  text-transform:uppercase;
-  color:#fff;
-}
-.pill.ig{ box-shadow: 0 0 14px rgba(192,132,252,.16); }
-.pill.fb{ box-shadow: 0 0 14px rgba(120,180,255,.16); }
-
 .preview-frame{
   border-radius:12px;
   overflow:hidden;
@@ -266,12 +177,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(0,0,0,.12);
   height: 320px;
 }
-.preview-frame iframe{
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
+.preview-frame iframe{ width:100%; height:100%; border:0; display:block; }
 .preview-frame .instagram-media{
   margin:0 !important;
   min-width:0 !important;
@@ -283,7 +189,6 @@ a:hover{ text-decoration: underline; }
   height: calc(100% + 70px);
 }
 
-/* ===== TWO WORLDS (unchanged) ===== */
 .split-wrap{
   margin-top:22px;
   padding:18px;
@@ -327,12 +232,7 @@ a:hover{ text-decoration: underline; }
   border-radius:14px;
   border:1px solid rgba(255,255,255,.12);
 }
-.map-wrap iframe{
-  width:100%;
-  height:380px;
-  border:0;
-  display:block;
-}
+.map-wrap iframe{ width:100%; height:380px; border:0; display:block; }
 
 footer{
   padding:24px 0;
@@ -354,3 +254,63 @@ footer{
   }
   .map-wrap iframe{ height:320px; }
 }
+``
+  --text:#ffffff;
+  --muted:#aaaaaa;
+  --accent:#c084fc;
+  --border:rgba(255,255,255,.12);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1a1025, var(--bg));
+  color: var(--text);
+}
+
+a{ color: inherit; text-decoration:none; }
+a:hover{ text-decoration: underline; }
+
+.container{ width:min(1000px,92vw); margin:0 auto; }
+.dot{ color: rgba(255,255,255,.35); }
+
+/* ===== TOP BAR (MUST stay clickable on mobile) ===== */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 999999;                 /* ✅ above embeds */
+  background: rgba(11,11,11,.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 0;
+  position: relative;
+  z-index: 999999;
+}
+.brand{
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* Hamburger */
+.menu-btn{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  position: relative;
+  z-index: 1000000;                /* ✅ above everything */
